@@ -1,0 +1,17 @@
+.grid-container {
+    display: grid;
+    justify-items: center;
+}
+
+.background-image {
+    background: url('../img/background.jpg');
+    background-size: cover;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .background-image {
+        background: url('../img/bea-ricardo-tall.jpeg');
+        background-size: cover;
+    }
+}

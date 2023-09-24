@@ -1,0 +1,4 @@
+.bullet {
+    display: list-item;
+    list-style-type: disc;
+}

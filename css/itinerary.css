@@ -1,0 +1,34 @@
+.h2 {
+    font-size: 40px;
+}
+
+.h3 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.justified {
+    width: 25em;
+    text-align: justify;
+    text-align-last: justify;
+}
+
+.right-justified {
+    text-align: right;
+}
+
+.carousel-container {
+    display: grid;
+    grid-template-columns: [first] 40px [line2] auto [col3-start] 40px [end];
+    justify-items: center;
+    align-items: center;
+
+}
+
+button {
+    max-height: 40px;
+}
+
+.my-div {
+    display: none;
+}

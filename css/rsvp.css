@@ -1,0 +1,172 @@
+.rsvp-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  justify-items: center;
+  /*align-items: center;*/
+}
+
+.background-image-tall {
+  background: url('../img/bea-ricardo-tall.jpeg');
+  background-size: cover;
+  min-width: 100%;
+  min-height: 700px;
+  align-items: center;
+  justify-items: center;
+  display: grid;
+}
+
+@media (max-width: 768px) {
+  .rsvp-grid {
+    grid-template-columns: 1fr;
+    padding-bottom: 100px;
+  }
+
+  .background-image-tall {
+    background: url('../img/background.jpg');
+    background-size: cover;
+    min-height: 200px;
+    max-height: 200px;
+  }
+}
+
+#rsvp-form {
+  height: auto;
+  margin-top: 25px;
+}
+
+.form-control {
+  display: inline-flex;
+  width: 190px;
+}
+
+.numbers-input::-webkit-outer-spin-button,
+.numbers-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#select-all {
+  background: none;
+  border: 1px #fff solid;
+  font-size: 1.5em;
+  text-align: center;
+  color: #21b99d;
+  margin-left: 10px;
+}
+
+
+#select-all:hover {
+  opacity: 0.5;
+}
+
+
+.numbers-input {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  text-align: center;
+  color: #21b99d;
+}
+
+#col-div {
+  justify-content: center;
+  align-items: center;
+}
+
+.numbers-input:focus {
+  outline: none;
+}
+
+.integer-input {
+  display: inline-flex;
+  margin: 1em;
+  width: 4em;
+  height: 3em;
+  color: #fff;
+  border: 1px #fff solid;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.firstNameInput {
+  margin-right: 10px;
+}
+
+.integer-input-container {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.button {
+  width: 80px;
+  display: inline;
+  margin: 5px;
+}
+
+#form-slide-container {
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box {
+  background: #fff;
+  width: 350px;
+  border-radius: 5px;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+#search-input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #333;
+}
+
+#search-input::placeholder {
+  color: #555;
+}
+
+#search-button {
+  background: transparent;
+  outline: 0;
+  border: 0;
+}
+
+#search-icon {
+  color: #555;
+  cursor: pointer;
+}
+
+.result-box {
+  color: #555;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.result-box ul {
+  border-top: 1px solid #999;
+  padding: 10px 5px;
+}
+
+.result-box ul li {
+  list-style: none;
+  border-radius: 3px;
+  padding: 10px 5px;
+  cursor: pointer;
+}
+
+.result-box ul li:hover {
+  background: #e9f3ff;
+}

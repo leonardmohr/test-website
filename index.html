@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Bootcamp</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/countdown-style.css">
+    <link rel="stylesheet" href="./css/showcase.css">
+    <link rel="stylesheet" href="./css/itinerary.css">
+    <link rel="stylesheet" href="./css/actividades.css">
+    <link rel="stylesheet" href="./css/regalos.css">
+    <link rel="stylesheet" href="./css/rsvp.css" <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navmenu">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="#learn" class="nav-link">Itenerario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#questions" class="nav-link">Dress Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#questions" class="nav-link">Alojamiento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#questions" class="nav-link">Regalos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instructors" class="nav-link">RSVP</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+
+    <!-- Showcase -->
+    <section class="background-image p-5 p-lg-0 pt-lg-5">
+        <div class="container">
+            <div class="grid-container">
+                <div class="countdown pt-5">
+                    <div class="bloc-time days" data-init-value="32">
+                        <span class="count-title">Days</span>
+                        <div class="figure days days-1">
+                            <span class="top">2</span>
+                            <span class="top-back">
+                                <span>2</span>
+                            </span>
+                            <span class="bottom">2</span>
+                            <span class="bottom-back">
+                                <span>2</span>
+                            </span>
+                        </div>
+
+                        <div class="figure days days-2">
+                            <span class="top">4</span>
+                            <span class="top-back">
+                                <span>4</span>
+                            </span>
+                            <span class="bottom">4</span>
+                            <span class="bottom-back">
+                                <span>4</span>
+                            </span>
+                        </div>
+
+                        <div class="figure days days-3">
+                            <span class="top">6</span>
+                            <span class="top-back">
+                                <span>6</span>
+                            </span>
+                            <span class="bottom">6</span>
+                            <span class="bottom-back">
+                                <span>6</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bloc-time hours" data-init-value="24">
+                        <span class="count-title">Hours</span>
+
+                        <div class="figure hours hours-1">
+                            <span class="top">2</span>
+                            <span class="top-back">
+                                <span>2</span>
+                            </span>
+                            <span class="bottom">2</span>
+                            <span class="bottom-back">
+                                <span>2</span>
+                            </span>
+                        </div>
+
+                        <div class="figure hours hours-2">
+                            <span class="top">4</span>
+                            <span class="top-back">
+                                <span>4</span>
+                            </span>
+                            <span class="bottom">4</span>
+                            <span class="bottom-back">
+                                <span>4</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bloc-time min" data-init-value="0">
+                        <span class="count-title">Minutes</span>
+
+                        <div class="figure min min-1">
+                            <span class="top">0</span>
+                            <span class="top-back">
+                                <span>0</span>
+                            </span>
+                            <span class="bottom">0</span>
+                            <span class="bottom-back">
+                                <span>0</span>
+                            </span>
+                        </div>
+
+                        <div class="figure min min-2">
+                            <span class="top">0</span>
+                            <span class="top-back">
+                                <span>0</span>
+                            </span>
+                            <span class="bottom">0</span>
+                            <span class="bottom-back">
+                                <span>0</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bloc-time sec" data-init-value="0">
+                        <span class="count-title">Seconds</span>
+
+                        <div class="figure sec sec-1">
+                            <span class="top">0</span>
+                            <span class="top-back">
+                                <span>0</span>
+                            </span>
+                            <span class="bottom">0</span>
+                            <span class="bottom-back">
+                                <span>0</span>
+                            </span>
+                        </div>
+
+                        <div class="figure sec sec-2">
+                            <span class="top">0</span>
+                            <span class="top-back">
+                                <span>0</span>
+                            </span>
+                            <span class="bottom">0</span>
+                            <span class="bottom-back">
+                                <span>0</span>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <img src="./title image.png" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="bg-dark p-5 text-light">
+        <div class="container">
+            <h2 class="mb-5 h2 text-center">
+                Te compartimos los detalles de la celebración
+            </h2>
+            <swiper>
+                <swiper-container navigation="true" pagination="true">
+                    <swiper-slide>
+                        <div class="row align-items-center justify-content-between ">
+                            <div class="col-md">
+
+                                <figure class="figure">
+                                    <img src="./img/beach-club.jpeg" class="figure-img img-fluid rounded"
+                                        alt="Location: Beach club de Casa de Campo">
+                                    <figcaption class="figure-caption text-light text-center">Fiesta Blanca en el Beach
+                                        Club de Casa de Campo.</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md p-5">
+                                <h3 class="h3">Día 1: Jueves, 6 de Marzo del 2025</h3>
+                                <p class="justified">
+                                    Comenzamos el fin de semana con una Fiesta Blanca en el Beach Club de Casa de Campo.
+                                    ¡Estás invitado a unirte a nosotros a partir de las 5:00 pm para una tarde de
+                                    música, baile y buena compañía!
+                                    Viste de blanco y prepárate para disfrutar de una atmósfera relajada y festiva junto
+                                    al mar.
+                                </p>
+                                <p class="right-justified mt-3">Dresscoode: Elegante Blanco</p>
+
+                            </div>
+                        </div>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <div class="row align-items-center mt-5 justify-content-between">
+                            <div class="col-md">
+                                <figure class="figure">
+                                    <img src="./img/boat-ride.JPG" class="figure-img img-fluid rounded"
+                                        alt="Location: Boat Ride">
+                                    <figcaption class="figure-caption text-light text-center">Día en Barco a Palmilla.
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md p-5">
+                                <h3 class="h3">Día 2: Viernes, 7 de Marzo del 2025</h3>
+                                <p class="justified">
+                                    ¡Es hora de explorar y disfrutar bajo el sol!
+                                    Te esperamos en la Marina de Casa de Campo a las 10 am para un emocionante día en
+                                    barco a Palmilla.
+                                    Disfrutaremos explorando aguas cristalinas, nadando, tomando el sol y compartiendo
+                                    risas mientras navegamos hacia aventuras inolvidables.
+                                </p>
+                                <p class="right-justified mt-3">Dresscoode: Tu traje de baño favorito y no olvides el
+                                    protector solar.</p>
+
+                            </div>
+
+                        </div>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <div class="row align-items-center mt-5 justify-content-between">
+                            <div class="col-md">
+                                <figure class="figure">
+                                    <img src="./img/catedral.JPG" class="figure-img img-fluid rounded"
+                                        alt="Location: Boat Ride">
+                                    <figcaption class="figure-caption text-light text-center">Ceremonia Religiosa en
+                                        Catedral Primada de Santo Domingo.</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md p-5">
+                                <h3 class="h3">Día 3: Sábado, 8 de Marzo del 2025</h3>
+                                <p class="justified">
+                                    ¡Llegó el gran día que hemos esperado con emoción!
+                                    A las 5:30 pm, nos encontraremos en la majestuosa
+                                    Catedral Primada de Santo Domingo para ser testigos de
+                                    la hermosa ceremonia religiosa en la que Beatriz y Ricardo
+                                    intercambiarán sus votos y promesas. Luego, nos dirigiremos
+                                    al elegante Hotel El Embajador para una celebración llena de
+                                    alegría, exquisita comida y baile.
+                                    ¡Prepárate para vivir una noche mágica!
+                                </p>
+                                <p class="right-justified mt-3">Dresscoode: Formal y elegante.</p>
+
+                            </div>
+
+
+                        </div>
+                    </swiper-slide>
+                </swiper-container>
+            </swiper>
+        </div>
+    </section>
+
+    <!-- Learn Sections -->
+    <section id="learn" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                    <h2 class="text-center h2">Transporte</h2>
+                    <p>
+                        Si necesitas trasladarte de La Romana a Santo Domingo para la celebración final, estará
+                        disponible
+                        un servicio de autobús. Por favor, cuéntanos si planeas utilizar este servicio.
+                        Es importante destacar que el servicio de autobús será de un solo trayecto (one way),
+                        lo que significa que el autobús no regresará a La Romana.
+                    </p>
+                    <p class="mt-2">
+                        Además, durante el día de la ceremonia en Santo Domingo,
+                        se proporcionará un autobús desde el Hotel El Embajador hasta la Catedral Primada
+                        de Santo Domingo para la ceremonia.
+                        Luego, el autobús te llevará de regreso al Hotel El Emajador para la cena y la fiesta.
+                    </p>
+
+                </div>
+                <div class="col-md p-5">
+                    <h2 class="text-center h2">Actividades Adicionales</h2>
+                    <p class="mb-3">
+                        Si llegas antes de los eventos principales, ¡tienes muchas opciones para disfrutar!
+                    </p>
+                    <p class="fw-bold mb-2">En Casa de Campo</p>
+                    <ul class="bullet">
+                        <li>Expolra lugares como Atos de Chavón.</li>
+                        <li>Relájate en la playa Minitas.</li>
+                        <li>Disfruta de deliciosos platillos en diversos restaurantes.
+                            Algunas recomendaciones incluyen SBG, El Limoncello, Shibuya y Onnos.
+                        </li>
+                    </ul>
+                    <p class="fw-bold mt-2">En Santo Domingo</p>
+                    <ul>
+                        <li>Explora la Zona Colonial.</li>
+                        <li>Disfruta del Jardín Botánico Nacional.</li>
+                        <li>Visita la Fortaleza Ozama.</li>
+                        <li>Pasea por el Parque Colón y sus alrededores.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="p-5 bg-primary" id="instructors">
+        <div class="container">
+            <h2 class="h2 text-center text-white">Lista de Regalos</h2>
+            <div class="row g-4">
+                <!-- Instructor 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <img height="100px" src="./img/Casa Cuesta.png" alt="" class="mb-3">
+                            <h3 class="card-title h3 mb-3">Casa Cuesta</h3>
+                            <!-- <p class="card-text">Encuentra regalos exclusivos y elegantes en Casa Cuesta para 
+                        ayudarnos a comenzar nuestra vida juntos.
+                    </p>-->
+                            <a href="https://listaderegalos.casacuesta.com/Event/Mariam-Roberto"
+                                class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructor 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <img height="100px" src="./img/lama.png" alt="" class="mb-3">
+                            <h3 class="card-title h3 mb-3">Plaza Lama</h3>
+                            <!--<p class="card-text">
+                        Explora una variedad de opciones en Plaza Lama que nos serán
+                        de gran untilidad mientras construimos nuestro futuro.
+                    </p>-->
+
+                            <a href="https://listadeboda.plazalama.com/lbd/lista/ver/432" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructor 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <img height="100px" src="./img/jumbo-2.png" alt="" class="mb-3">
+                            <h3 class="card-title h3 mb-3">Jumbo</h3>
+                            <!--<p class="card-text">
+                        En Jumbo, encuentra regalos prácticos y especiales que nos acompañarán 
+                        en esta nueva etapa de nuestras vidas.
+                    </p> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Instructor 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <svg class="mb-3" xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 0 576 512">
+                                <path
+                                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+                            </svg>
+                            <h3 class="card-title h3 mb-3">Monetario</h3>
+                            <p class="card-text">
+                                Si deseas contribuir con un regalo monetario, hemos habilitado una cuenta bancaria para
+                                recibir tus obsequios.
+                                Para obtener los detalles bancarios, por favor contáctanos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bg-dark p-5 text-light">
+        <div class="container">
+            <h2 class="mb-3 h2 text-center">
+                Alojamiento
+            </h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="h4">Santo Romana</div>
+                    <ul class="bullet justified">
+                        <li>Hotel Casa de Campo: Disfruta del lujo y comodidad en este prestigioso
+                            hotel que brinda una
+                            exprience única.</li>
+                        <li>Relájate en la playa Minitas.</li>
+                        <li>Disfruta de deliciosos platillos en diversos restaurantes.
+                            Algunas recomendaciones incluyen SBG, El Limoncello, Shibuya y Onnos.
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="h4">Santo Domingo</div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+    <!-- RSVP -->
+    <section class="bg-dark text-light " id="RSVP">
+        <div class="rsvp-grid">
+            <div class="background-image-tall">
+                <div class="h3">RSVP</div>
+            </div>
+            <div id="right" class="bg-dark text-light">
+                <form id="rsvp-form" class="border p-4">
+                    <div class="row mb-3 text-center h4">
+                        <p>Registra tu Asistencia</p>
+                    </div>
+                    <div class="align" id="form-slide-container">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- partial -->
+    <!--<script src="./js/rsvp.js"></script> -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
+    <script src="./js/countdown.js"></script>
+    <!-- <script  src="./js/carousel.js"></script> -->
+    <script src="./js/regalos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/48e08d6a6d.js" crossorigin="anonymous"></script>
+    <script src="./js/autocomplete.js"></script>
+</body>
+
+</html>
