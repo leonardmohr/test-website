@@ -635,17 +635,34 @@ function customAlert(type, message) {
 
 
 /* Guest List */
+
 const groups = [
+    ["Beatriz Gil", "Ricardo Lebron"],
+    ["Marivi Gonzalez", "Carlos Gil"],
+    ["Clara Gil", "Plus One"],
+    ["Silvia Gonzalez", "Mauro Gandini"],
+    ["Guillermo Gonzalez"],
+    ["Fefe Gil", "Maricar Rodrigalvarez"],
+    ["Jorge Gil", "Beatriz"],
+    ["Jose Antonio Gil", "Patricia Fernandez"],
+    ["Tía Tere"],
+    ["Clara"],
+    ["Beatriz", "Pepo"],
+    ["Eunisis Vasquez"],
+    ["Eduardo Vasquez", "Esposa"],
+    ["Jose Maria Echevarria", "Teresa Echevarria"],
+    ["Andreu Sacasas", "Isabel Garriga"],
+    ["Jose Luis Vandres", "Begoña Bernues", "Nacho Vandres"],
+    ["Gonzalo", "Marisa", "Patricia"],
+    ["Monica Triana", "Jordi"],
+    ["Carlos Segarra", "Eli Gonzalez", "Carlitos"],
+    ["Belen Rubinat", "Chema", "David"],
+    ["Maria Masaneda", "Pocho"],
+    ["Ignacio Tejero", "Rosa"],
     ["Roman Sanahuja", "Maria Teresa Casas", "Daniel Bascones", "Enrique Sanahuja", "Maria Teresa Sanahuja"],
     ["Leonard Mohr", "Flor Grimaldo"],
-    ["Rafa"],
-    ["Clara Gil", "Guest"],
-    ["Roman Sanahuja", "Maria Teresa Casas", "Daniel Bascones", "Enrique Sanahuja", "Maria Teresa Sanahuja"],
-    ["Leonard Mohr", "Flor Grimaldo"],
-    ["Rafa"],
-    ["Clara Gil"],
-    ["Roman Sanahuja", "Maria Teresa Casas", "Daniel Bascones", "Enrique Sanahuja", "Maria Teresa Sanahuja"]
-];
+    ["Rafa"]
+]
 
 
 /*
