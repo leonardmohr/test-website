@@ -10,6 +10,7 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/countdown-style.css">
     <link rel="stylesheet" href="./css/showcase.css">
     <link rel="stylesheet" href="./css/itinerary.css">
@@ -17,12 +18,15 @@
     <link rel="stylesheet" href="./css/regalos.css">
     <link rel="stylesheet" href="./css/rsvp.css" <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Parisienne&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-3 fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark p-4 fixed-top alice">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -168,28 +172,28 @@
 
                     </div>
                 </div>
-                <img src="./title image.png" class="img-fluid" alt="Responsive image">
+                <h1 id="Title">Beatriz & Ricardo</h1>
             </div>
         </div>
     </section>
 
 
 
-    <section class="bg-dark p-2 text-light" id="itinerary">
+    <section class="p-2 text-dark" id="itinerary">
         <div class="container">
-            <h2 class="m-2 h2 text-center">
+            <h2 class="m-2 h2 text-center alice">
                 Te compartimos los detalles de la celebración
             </h2>
             <swiper>
                 <swiper-container navigation="true" pagination="true">
                     <swiper-slide>
-                        <div class="row align-items-center justify-content-between ">
+                        <div class="row align-items-center justify-content-between alice">
                             <div class="col-md">
 
                                 <figure class="figure p-5">
                                     <img src="./img/beach-club.jpeg" class="figure-img img-fluid rounded"
                                         alt="Location: Beach club de Casa de Campo">
-                                    <figcaption class="figure-caption text-light text-center">Fiesta Blanca en el Beach
+                                    <figcaption class="figure-caption text-dark text-center">Fiesta Blanca en el Beach
                                         Club de Casa de Campo.</figcaption>
                                 </figure>
                             </div>
@@ -213,7 +217,7 @@
                                 <figure class="figure p-5">
                                     <img src="./img/boat-ride.JPG" class="figure-img img-fluid rounded"
                                         alt="Location: Boat Ride">
-                                    <figcaption class="figure-caption text-light text-center">Día en Barco a Palmilla.
+                                    <figcaption class="figure-caption text-dark text-center">Día en Barco a Palmilla.
                                     </figcaption>
                                 </figure>
                             </div>
@@ -239,7 +243,7 @@
                                 <figure class="figure p-5">
                                     <img src="./img/catedral.JPG" class="figure-img img-fluid rounded"
                                         alt="Location: Boat Ride">
-                                    <figcaption class="figure-caption text-light text-center">Ceremonia Religiosa en
+                                    <figcaption class="figure-caption text-dark text-center">Ceremonia Religiosa en
                                         Catedral Primada de Santo Domingo.</figcaption>
                                 </figure>
                             </div>
@@ -317,6 +321,12 @@
     <section class="p-5 bg-primary" id="regalos">
         <div class="container">
             <h2 class="h2 text-center text-white">Lista de Regalos</h2>
+            <p class="text-center mb-3">Nos llena de ilusión compartir contigo estos días. </p>
+            <p class="text-center">
+                El mejor regalo es tú
+                presencia
+                pero, si quieres,
+                puedes ayudarnos a construir nuestra nueva vida juntos.</p>
             <div class="row g-4">
                 <!-- Instructor 1 -->
                 <div class="col-md-6 col-lg-3">
