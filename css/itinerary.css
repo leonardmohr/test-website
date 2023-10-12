@@ -14,7 +14,7 @@
 }
 
 .right-justified {
-    text-align: right;
+    text-align: right !important;
 }
 
 .carousel-container {
@@ -37,4 +37,44 @@ button {
     background-color: #f7e7ce;
 }
 
-Ç¨*
+.itinerary-section {
+    background-color: rgb(243, 235, 222);
+}
+
+.flex-container-it {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+
+}
+
+.flex-container-it>div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    min-width: 400px;
+    text-align: center;
+    height: 400px;
+    max-width: 400px;
+    border-radius: 15px;
+
+}
+
+figcaption {
+    font-size: 15px !important;
+    font-weight: bold !important;
+}
+
+.flex-container-it>div>p {
+    text-align: left;
+    font-size: 15px;
+    font-family: alice;
+}
+
+.flex-container-it>div>.heading {
+    font-size: 25px !important;
+    font-family: alice;
+    font-weight: bold;
+}
