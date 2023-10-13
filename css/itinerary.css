@@ -66,3 +66,7 @@ figcaption {
     max-width: 360px;
     max-height: 240px;
 }
+
+.right-justified {
+    text-align: right !important;
+}
