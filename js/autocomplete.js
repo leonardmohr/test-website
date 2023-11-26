@@ -91,7 +91,10 @@ function slideOneButton() {
         button.addEventListener("click", nextButton);
         actionButtonContainer.appendChild(button);
     } else {
-        actionButtonContainer.appendChild(submitButton());
+        let btn = submitButton();
+        btn.value = "No Asistiremos"
+        btn.style.background = '#dc3545';
+        actionButtonContainer.appendChild(btn);
     }
 }
 
@@ -136,7 +139,7 @@ searchInput.onkeyup = function () {
                     foundName.textContent = name;
                     foundName.addEventListener('click', function () {
                         displayGroupMembers(groups[i], i);
-                    })
+                    });
                     result.push(foundName);
                 }
             }

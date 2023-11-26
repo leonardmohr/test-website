@@ -103,7 +103,8 @@
 }
 
 .button {
-  width: 80px;
+  min-width: 80px;
+  max-width: 145px;
   display: inline;
   margin: 5px;
 }

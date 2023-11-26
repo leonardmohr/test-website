@@ -1,0 +1,67 @@
+   /* Style for the grey background section */
+   .accommodation-section {
+       /*background-color: rgb(251, 251, 253);*/
+       background-color: rgb(243, 235, 222);
+       text-align: center;
+       padding-top: 20px;
+   }
+
+   /* Style for the title */
+   .section-title {
+       font-size: 35px !important;
+       font-weight: bold;
+       font-family: alice;
+
+   }
+
+   /* Style for the containers */
+   .accommodation-container {
+       display: flex;
+       justify-content: space-between;
+       margin-top: 20px;
+   }
+
+   /* Style for individual container */
+   .accommodation-box {
+       width: 50%;
+       /* Adjust the width as needed */
+       /*background-color: rgb(243, 235, 222);*/
+       background-color: rgb(251, 251, 253);
+       /* Background color */
+       border: none;
+       padding: 30px;
+       box-sizing: border-box;
+   }
+
+   .accomodation-subcategory-title {
+       font-size: 20px;
+       font-weight: bold;
+
+   }
+
+   .hotel-information {
+       text-align: justify;
+       width: 80%;
+       margin: 10px;
+   }
+
+
+   .accommodation-box>p {
+       text-align: justify;
+   }
+
+   @media (max-width: 926.8px) {
+       .accommodation-container {
+           display: flex;
+           justify-content: space-between;
+           flex-direction: column;
+           margin-top: 20px;
+       }
+
+       .accommodation-box {
+           width: 100%;
+           /* Adjust the width as needed */
+           /*background-color: rgb(243, 235, 222);*/
+           4r box-sizing: border-box;
+       }
+   }
