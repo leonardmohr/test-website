@@ -1,5 +1,6 @@
 .card {
     transition: all 0.3s;
+    border-width: 0px !important;
 }
 
 .card:hover {
@@ -18,4 +19,8 @@
     .mobile-hide Ç {
         display: none;
     }
+}
+
+#regalos {
+    background-color: rgb(243, 235, 222);
 }

@@ -171,3 +171,7 @@
 .result-box ul li:hover {
   background: #e9f3ff;
 }
+
+.result-box ul li:focus {
+  background: #e9f3ff;
+}

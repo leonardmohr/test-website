@@ -128,6 +128,7 @@ function previousEvent() {
  */
 searchInput.onkeyup = function () {
     let result = [];
+    let selected;
     let input = searchInput.value;
     if (input.length) {
         for (let i = 0; i < groups.length; i++) {
