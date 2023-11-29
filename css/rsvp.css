@@ -107,6 +107,7 @@
   max-width: 145px;
   display: inline;
   margin: 5px;
+  border: none;
 }
 
 #form-slide-container {
@@ -169,9 +170,5 @@
 }
 
 .result-box ul li:hover {
-  background: #e9f3ff;
-}
-
-.result-box ul li:focus {
   background: #e9f3ff;
 }

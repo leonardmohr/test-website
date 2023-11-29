@@ -50,6 +50,7 @@ function slideOne() {
     searchInput.placeholder = "Busca tu nombre";
     searchInput.ariaLabel = "Busca tu nombre";
     searchInput.autocomplete = "off";
+    searchInput.onfocus = "window.location.href='#search-input'; return true;"
 
     let searchButton = document.createElement("button");
     searchButton.id = "search-button";
@@ -116,6 +117,7 @@ function previousEvent() {
     slideNumber--;
 }
 
+let result = [];
 
 /* inputBox.onkeyup
  * -----------------------------
@@ -126,9 +128,22 @@ function previousEvent() {
  * When a suggestion is clicked, name and fellow group members
  * are displayed.
  */
-searchInput.onkeyup = function () {
-    let result = [];
-    let selected;
+searchInput.onkeydown = function (e) {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        console.log("Enter Pressed");
+        for (let i = 0; i < result.length; i++) {
+            if (result[i].background === "#e9f3ff;") {
+                let groupnumber = parseInt(result[i].getAttribute("group"))
+                console.log(groupnumber)
+                displayGroupMembers(groups[groupnumber]);
+
+                console.log("found");
+            }
+        }
+        return;
+    }
+    result = [];
     let input = searchInput.value;
     if (input.length) {
         for (let i = 0; i < groups.length; i++) {
@@ -138,9 +153,13 @@ searchInput.onkeyup = function () {
                 if (name.toLowerCase().includes(input.toLowerCase())) {
                     const foundName = document.createElement('li');
                     foundName.textContent = name;
+                    foundName.setAttribute("group", i);
                     foundName.addEventListener('click', function () {
                         displayGroupMembers(groups[i], i);
                     });
+                    foundName.addEventListener('mouseover', function (e) {
+                        console.log(foundName);
+                    })
                     result.push(foundName);
                 }
             }
@@ -208,20 +227,6 @@ function displayGroupMembers(groups, index) {
         let groupMember = members[i];
         let newName = newGroupMember(groupMember);
         groupData.notAttending.push(groupMember);
-
-        newName.addEventListener("change", () => {
-            let particularCheckBox = newName.getElementsByTagName("div")[0].getElementsByTagName("input")[0];
-            if (particularCheckBox.checked) {
-                removeName(groupMember, groupData.notAttending);
-                groupData.attending.push(groupMember);
-                slideOneButton();
-            } else {
-                removeName(groupMember, groupData.attending);
-                groupData.notAttending.push(groupMember);
-                slideOneButton();
-            }
-            console.log(groupData);
-        });
         groupBox.appendChild(newName);
     }
     resetForm();
@@ -272,13 +277,33 @@ function newGroupMember(name) {
     checkBox.value = "";
     checkBox.ariaLabel = "Checkbox.  Check " + name + " is not attending."
 
-    checkBox.addEventListener("change", function () {
-        if (!checkBox.checked) {
+    inputGroup.addEventListener("click", function () {
+        if (checkBox.checked) {
+            checkBox.checked = false;
             textInput.setAttribute("disabled", "");
+            removeName(name, groupData.attending);
+            groupData.notAttending.push(name);
+            slideOneButton();
         } else {
+            checkBox.checked = true;
             textInput.removeAttribute("disabled");
+            removeName(name, groupData.notAttending);
+            groupData.attending.push(name);
+            slideOneButton();
+        }
+        console.log(groupData);
+    });
+
+    checkBox.addEventListener("click", function () {
+        if (checkBox.checked) {
+            checkBox.checked = false;
+        } else {
+            checkBox.checked = true;
         }
     });
+
+
+
 
     inputGroupText.appendChild(checkBox);
 

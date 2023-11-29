@@ -26,7 +26,7 @@
        width: 50%;
        /* Adjust the width as needed */
        /*background-color: rgb(243, 235, 222);*/
-       background-color: rgb(251, 251, 253);
+       background-color: rgb(251, 251, 251);
        /* Background color */
        border: none;
        padding: 30px;
@@ -62,6 +62,6 @@
            width: 100%;
            /* Adjust the width as needed */
            /*background-color: rgb(243, 235, 222);*/
-           4r box-sizing: border-box;
+           box-sizing: border-box;
        }
    }
