@@ -3,10 +3,6 @@ const buttonBox = document.getElementById("action-button-container");
 const formSlideContainer = document.getElementById("form-slide-container");
 
 
-const searchInput = document.createElement("input"); // Contains search bar
-const resultsBox = document.createElement("div");    // Contains suggestions bar
-const groupBox = document.createElement("div");      // Contains group members
-const actionButtonContainer = document.createElement("div");
 const input1 = document.createElement("input");
 const input2 = document.createElement("input");
 const input3 = document.createElement("input");
@@ -16,9 +12,82 @@ const integerInput = document.createElement('input');
 
 const form = document.getElementById("rsvp-form");
 
-/* Guest information for Group */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * The different HTML Elements we will use for our RSVP form *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+/* Elements Related to multiple slides */
+const nextButton = document.createElement("button");
+nextButton.type = "button";
+nextButton.className = "btn btn-info button";
+nextButton.innerText = "Next";
+nextButton.addEventListener("click", nextButtonEvent);
+
+const submitButton = document.createElement("input");
+submitButton.type = "button";
+submitButton.className = "btn button"
+submitButton.addEventListener("click", function (event) {
+    console.log("clicking");
+    event.preventDefault(); // Prevent the default form submission behavior
+    updateValue();
+    submitToGoogleSheet(JSON.stringify(groupData));
+});
+
+const previousButton = document.createElement("button");
+previousButton.type = "button";
+previousButton.className = "btn btn-info button"
+previousButton.innerText = "Previous";
+previousButton.addEventListener("click", previousEvent);
+
+/* Elements related to first slide */
+const searchBox = document.createElement("div");
+searchBox.className = "mb-3 row justify-content-between search-box";
+
+const searchRow = document.createElement("div");
+searchRow.className = "search-row";
+
+const searchInput = document.createElement("input"); // Contains search bar
+searchInput.id = "search-input";
+searchInput.type = "text";
+searchInput.placeholder = "Busca tu nombre";
+searchInput.ariaLabel = "Busca tu nombre";
+searchInput.autocomplete = "off";
+searchInput.onfocus = "window.location.href='#search-input'; return true;"
+
+const searchButton = document.createElement("button");
+searchButton.id = "search-button";
+
+const magnifyingGlass = document.createElement("i");
+magnifyingGlass.id = "search-icon";
+magnifyingGlass.className = "fa-solid fa-magnifying-glass";
+
+searchRow.appendChild(searchInput);
+searchButton.appendChild(magnifyingGlass);
+searchRow.appendChild(searchButton);
+searchBox.appendChild(searchRow);
+
+const resultsBox = document.createElement("div");    // Contains suggestions bar
+resultsBox.className = "result-box";
+resultsBox.id = "result-box";
+searchBox.appendChild(resultsBox);
+
+const groupBox = document.createElement("div");      // Contains group members
+groupBox.id = "group-box";
+groupBox.className = "mb-3";
+
+const actionButtonContainer = document.createElement("div");
+actionButtonContainer.className = "row justify-content-center";
+actionButtonContainer.id = "action-button-container";
+
+/* Guest information for Group. This is what gets sent to google sheets. */
 var groupData = {};
 resetGroup();
+
+/*
+ * resetGroup()
+ * ------------
+ * Clears all data on the group that will (or won't) be attending.
+ */
 function resetGroup() {
     groupData.attending = [];
     groupData.notAttending = [];
@@ -27,52 +96,16 @@ function resetGroup() {
     groupData.note = "";
     groupData.groupNumber = 0;
 }
-/* Keep track of what slide is being shown */
-var slideNumber = 0;
 
-/* slideOne()
- * -----------------
- * The following is used to build the 
- * front and back end of the first slide of 
- * RSVP form.
+var slideNumber = 0;   /* Keep track of what slide is being shown */
+
+/* 
+ * slideOne()
+ * ---------------------------------------------
+ * Builds the UI of the first slide of RSVP form
  */
 function slideOne() {
     formSlideContainer.innerHTML = "";
-    let searchBox = document.createElement("div");
-    searchBox.className = "mb-3 row justify-content-between search-box";
-
-    let searchRow = document.createElement("div");
-    searchRow.className = "search-row";
-
-    //let searchInput = document.createElement("input");
-    searchInput.id = "search-input";
-    searchInput.type = "text";
-    searchInput.placeholder = "Busca tu nombre";
-    searchInput.ariaLabel = "Busca tu nombre";
-    searchInput.autocomplete = "off";
-    searchInput.onfocus = "window.location.href='#search-input'; return true;"
-
-    let searchButton = document.createElement("button");
-    searchButton.id = "search-button";
-
-    let magnifyingGlass = document.createElement("i");
-    magnifyingGlass.id = "search-icon";
-    magnifyingGlass.className = "fa-solid fa-magnifying-glass";
-
-    searchRow.appendChild(searchInput);
-    searchButton.appendChild(magnifyingGlass);
-    searchRow.appendChild(searchButton);
-    searchBox.appendChild(searchRow);
-
-    //let resultsBox = document.createElement("div");
-    resultsBox.className = "result-box";
-    resultsBox.id = "result-box";
-    searchBox.appendChild(resultsBox);
-
-    //let groupBox = document.createElement("div");
-    groupBox.id = "group-box";
-    groupBox.className = "mb-3";
-
     formSlideContainer.appendChild(searchBox);
     formSlideContainer.appendChild(groupBox);
     formSlideContainer.appendChild(actionButtonContainer);
@@ -80,33 +113,20 @@ function slideOne() {
 }
 slideOne();
 
+
 function slideOneButton() {
     actionButtonContainer.innerHTML = '';
-    actionButtonContainer.className = "row justify-content-center";
-    actionButtonContainer.id = "action-button-container";
+
     if (groupData.attending.length != 0) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "btn btn-info button";
-        button.innerText = "Next";
-        button.addEventListener("click", nextButton);
-        actionButtonContainer.appendChild(button);
+        actionButtonContainer.appendChild(nextButton);
     } else {
-        let btn = submitButton();
-        btn.value = "No Asistiremos"
-        btn.style.background = '#dc3545';
-        actionButtonContainer.appendChild(btn);
+        /* Stylize submit button to warn users that no one is attending */
+        submitButton.value = "No Asistiremos"
+        submitButton.style.background = '#dc3545';
+        actionButtonContainer.appendChild(submitButton);
     }
 }
 
-function previous() {
-    let button = document.createElement("button");
-    button.type = "button";
-    button.className = "btn btn-info button"
-    button.innerText = "Previous";
-    button.addEventListener("click", previousEvent);
-    return button;
-}
 
 function previousEvent() {
     if (slideNumber == 1) {
@@ -119,6 +139,13 @@ function previousEvent() {
 
 let result = [];
 
+// Prevent reloading of page on enter press
+window.onkeydown = function (e) {
+    if (e.key === "Enter" || e.keyCode === 13) {
+        e.preventDefault();
+    }
+}
+
 /* inputBox.onkeyup
  * -----------------------------
  * Looks at text typed into search box and 
@@ -128,8 +155,8 @@ let result = [];
  * When a suggestion is clicked, name and fellow group members
  * are displayed.
  */
-searchInput.onkeydown = function (e) {
-    if (e.keyCode === 13) {
+searchInput.onkeyup = function (e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
         e.preventDefault();
         console.log("Enter Pressed");
         for (let i = 0; i < result.length; i++) {
@@ -144,13 +171,13 @@ searchInput.onkeydown = function (e) {
         return;
     }
     result = [];
-    let input = searchInput.value;
+    let input = searchInput.value.toLowerCase();
     if (input.length) {
         for (let i = 0; i < groups.length; i++) {
             let group = groups[i]
             for (let j = 0; j < group.length; j++) {
-                let name = group[j];
-                if (name.toLowerCase().includes(input.toLowerCase())) {
+                let name = group[j].toLowerCase();
+                if (name.includes(input)) {
                     const foundName = document.createElement('li');
                     foundName.textContent = name;
                     foundName.setAttribute("group", i);
@@ -435,7 +462,7 @@ function slideTwo() {
     specificDaysContainer.appendChild(specificDays);
 
     formSlideContainer.appendChild(specificDaysContainer);
-    formSlideContainer.appendChild(previous());
+    formSlideContainer.appendChild(previousButton);
     formSlideContainer.appendChild(slideTwoButton());
 
 }
@@ -444,7 +471,7 @@ function slideTwoButton() {
     button.type = "button";
     button.className = "btn btn-info button";
     button.innerText = "Next";
-    button.addEventListener("click", nextButton);
+    button.addEventListener("click", nextButtonEvent);
     return button;
 }
 
@@ -560,9 +587,10 @@ function slideThree() {
     // Append the outer div to the target container with ID "container"
     formSlideContainer.appendChild(outerDiv);
     formSlideContainer.appendChild(alertBox);
-    formSlideContainer.appendChild(previous());
-
-    formSlideContainer.appendChild(submitButton());
+    formSlideContainer.appendChild(previousButton);
+    submitButton.value = "Submit";
+    submitButton.style.background = "#68cfee";
+    formSlideContainer.appendChild(submitButton);
 };
 
 function updateValue() {
@@ -570,19 +598,6 @@ function updateValue() {
     console.log(groupData);
 }
 
-function submitButton() {
-    let button = document.createElement("input");
-    button.type = "button";
-    button.className = "btn btn-info button"
-    button.value = "Submit";
-    button.addEventListener("click", function (event) {
-        console.log("clicking");
-        event.preventDefault(); // Prevent the default form submission behavior
-        updateValue();
-        submitToGoogleSheet(JSON.stringify(groupData));
-    });
-    return button;
-}
 
 /* Use button to add */
 function add(input) {
@@ -610,11 +625,12 @@ function subtract(input) {
 
 
 
-/* nextButton()
+/* nextButtonEvent()
  * ----------------
- * Creates next button
+ * Defines what should happen when 
+ * nextButton is clicked.
 */
-function nextButton() {
+function nextButtonEvent() {
     formSlideContainer.innerHTML = "";
     slideNumber++;
     if (slideNumber == 1) {
