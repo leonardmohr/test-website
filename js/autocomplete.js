@@ -147,7 +147,7 @@ window.onkeydown = function (e) {
 }
 
 /* inputBox.onkeyup
- * -----------------------------
+ * ----------------
  * Looks at text typed into search box and 
  * compares with names of invited people.
  * Displays matches found as possible search suggestions.
@@ -157,27 +157,17 @@ window.onkeydown = function (e) {
  */
 searchInput.onkeyup = function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
-        e.preventDefault();
-        console.log("Enter Pressed");
-        for (let i = 0; i < result.length; i++) {
-            if (result[i].background === "#e9f3ff;") {
-                let groupnumber = parseInt(result[i].getAttribute("group"))
-                console.log(groupnumber)
-                displayGroupMembers(groups[groupnumber]);
-
-                console.log("found");
-            }
-        }
+        enterKey(e);
         return;
     }
-    result = [];
+    result = []; // clear search results
     let input = searchInput.value.toLowerCase();
     if (input.length) {
         for (let i = 0; i < groups.length; i++) {
-            let group = groups[i]
+            let group = groups[i];
             for (let j = 0; j < group.length; j++) {
-                let name = group[j].toLowerCase();
-                if (name.includes(input)) {
+                let name = group[j];
+                if (name.toLowerCase().includes(input)) {
                     const foundName = document.createElement('li');
                     foundName.textContent = name;
                     foundName.setAttribute("group", i);
@@ -201,6 +191,13 @@ searchInput.onkeyup = function (e) {
     } else {
         resultsBox.innerHTML = '';
     }
+}
+
+function enterKey(e) {
+    e.preventDefault();
+    let groupNumber = parseInt(result[0].getAttribute("group"));
+    console.log("Enter Pressed and groupNumber = " + groupNumber);
+    displayGroupMembers(groups[groupNumber], groupNumber);
 }
 
 
