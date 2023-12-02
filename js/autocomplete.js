@@ -136,7 +136,7 @@ function previousEvent() {
     }
     slideNumber--;
 }
-
+let highlighted = null;
 let result = [];
 
 // Prevent reloading of page on enter press
@@ -160,7 +160,20 @@ searchInput.onkeyup = function (e) {
         enterKey(e);
         return;
     }
+
+    if (e.key === 'ArrowUp' || e.keyCode === 38) {
+        e.preventDefault();
+        upKey(e);
+        return;
+    }
+
+    if (e.key === 'ArrowDown' || e.keyCode === 40) {
+        downKey(e);
+        return;
+    }
+
     result = []; // clear search results
+    highlighted = null; // Nothing highlighted anymore
     let input = searchInput.value.toLowerCase();
     if (input.length) {
         for (let i = 0; i < groups.length; i++) {
@@ -172,10 +185,17 @@ searchInput.onkeyup = function (e) {
                     foundName.textContent = name;
                     foundName.setAttribute("group", i);
                     foundName.addEventListener('click', function () {
-                        displayGroupMembers(groups[i], i);
+                        displayGroupMembers(i);
                     });
                     foundName.addEventListener('mouseover', function (e) {
+                        foundName.style.background = "#e9f3ff";
+                        highlighted = foundName;
                         console.log(foundName);
+                    })
+
+                    foundName.addEventListener('mouseleave', function (e) {
+                        foundName.style.background = "#FFFFFF";
+                        highlighted = null;
                     })
                     result.push(foundName);
                 }
@@ -195,9 +215,43 @@ searchInput.onkeyup = function (e) {
 
 function enterKey(e) {
     e.preventDefault();
-    let groupNumber = parseInt(result[0].getAttribute("group"));
+    let groupNumber;
+    if (highlighted != null) {
+        groupNumber = parseInt(highlighted.getAttribute("group"));
+    } else {
+        groupNumber = parseInt(result[0].getAttribute("group"));
+    }
+
     console.log("Enter Pressed and groupNumber = " + groupNumber);
-    displayGroupMembers(groups[groupNumber], groupNumber);
+    displayGroupMembers(groupNumber);
+}
+
+function upKey(e) {
+    e.preventDefault();
+    console.log("up");
+    let selected;
+    if (highlighted && (selected = highlighted.previousElementSibling)) {
+        highlighted.style.background = "#FFFFFF";
+        selected.style.background = "#e9f3ff";
+        highlighted = selected;
+        highlighted.scrollIntoViewIfNeeded();
+    }
+}
+
+function downKey(e) {
+    e.preventDefault();
+    console.log("down");
+    let selected;
+
+    if (!highlighted) {
+        highlighted = result[0];
+        highlighted.style.background = "#e9f3ff";
+    } else if (selected = highlighted.nextElementSibling) {
+        highlighted.style.background = "#FFFFFF";
+        selected.style.background = "#e9f3ff";
+        highlighted = selected;
+        highlighted.scrollIntoViewIfNeeded();
+    }
 }
 
 
@@ -230,7 +284,8 @@ function display(result) {
  *         which contain an array of invited guests for that group, and
  *         an integer for how many additional guests group can bring.
  */
-function displayGroupMembers(groups, index) {
+function displayGroupMembers(index) {
+
     resetGroup();
     groupData.groupNumber = index;
     slideOneButton();
@@ -240,10 +295,10 @@ function displayGroupMembers(groups, index) {
     groupDescription.innerText = "Elige los miembros de tu grupo que van a asistir.";
     groupDescription.className = "mb-3"
 
-    let members = groups;           // Array of names of group members
-    searchInput.value = "";               // Clear input box
-    resultsBox.innerHTML = "";         // Don't show anymore suggestions
-    groupBox.innerHTML = "";           // Reset group box
+    let members = groups[index];            // Array of names of group members
+    searchInput.value = "";                 // Clear input box
+    resultsBox.innerHTML = "";              // Don't show anymore suggestions
+    groupBox.innerHTML = "";                // Reset group box
     groupBox.appendChild(groupDescription); // Add user instructions
 
     /* Add group members to screen and keep track of what ones are attending or not. */
