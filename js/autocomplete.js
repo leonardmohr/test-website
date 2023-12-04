@@ -218,12 +218,17 @@ function enterKey(e) {
     let groupNumber;
     if (highlighted != null) {
         groupNumber = parseInt(highlighted.getAttribute("group"));
-    } else {
+        displayGroupMembers(groupNumber);
+        searchInput.blur();
+    } else if (result.length > 0) {
         groupNumber = parseInt(result[0].getAttribute("group"));
+        displayGroupMembers(groupNumber);
+        searchInput.blur();
     }
 
+
     console.log("Enter Pressed and groupNumber = " + groupNumber);
-    displayGroupMembers(groupNumber);
+
 }
 
 function upKey(e) {
