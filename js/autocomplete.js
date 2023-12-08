@@ -201,16 +201,88 @@ searchInput.onkeyup = function (e) {
                 }
             }
         }
-        display(result.sort((a, b) => {
-            if (a.textContent === b.textContent)
-                return 0;
-            if (a.textContent > b.textContent)
-                return 1;
-            return -1;
-        }));
+        result = rankResults(input, result);
+        display(result);
     } else {
         resultsBox.innerHTML = '';
     }
+}
+
+function compareFunction(a, b) {
+    if (a.textContent === b.textContent)
+        return 0;
+    if (a.textContent > b.textContent)
+        return 1;
+    return -1;
+}
+
+function rankResults(st, result) {
+    let prime = [];
+    let subprime = [];
+    for (let i = 0; i < result.length; i++) {
+        if (result[i].textContent.toLowerCase().startsWith(st)) {
+            prime.push(result[i]);
+        } else {
+            subprime.push(result[i]);
+        }
+    }
+    prime.sort(compareFunction);
+    subprime.sort(compareFunction);
+
+    return prime.concat(subprime);
+}
+
+
+function msdSort(array) {
+    var m = getMaxLength(array);
+    let result = msdSortHelper(array, 0, m);
+    return result;
+
+}
+
+function printArray(array) {
+    for (var i = 0; i < array.length; i++) {
+        console.log(i + ": " + array[i].textContent + "\n");
+    }
+}
+
+function msdSortHelper(array, index, maxLength) {
+    let result = [];
+    if ((array.length <= 1) || (index >= maxLength))
+        return array;
+    //printArray(array);
+    array.sort((a, b) => {
+        if (a.textContent.charAt(index) === b.textContent.charAt(index))
+            return 0;
+        if (a.textContent.charAt(index) > b.textContent.charAt(index))
+            return 1;
+        return -1;
+    });
+    //printArray(array);
+    var start = 0;
+
+    let l = array.length;
+    for (var end = 1; end < l; end++) {
+        if (end != l - 1 && (array[end].textContent.charAt(index) != array[start].textContent.charAt(index))) {
+            result = result.concat(msdSortHelper(array.slice(start, end), index + 1, getMaxLength(array)));
+            start = end;
+        } else if (end == l - 1) {
+            result = result.concat(msdSortHelper(array.slice(start), index + 1, getMaxLength(array)));
+        }
+    }
+
+    return result;
+
+}
+
+function getMaxLength(arrayOfStrings) {
+    var max = 0;
+    for (var i = 0; i < arrayOfStrings.length; i++) {
+        var m = arrayOfStrings[i].textContent.length
+        if (m > max)
+            max = m;
+    }
+    return max;
 }
 
 function enterKey(e) {
@@ -763,7 +835,7 @@ const groups = [
     ["Ignacio Tejero", "Rosa"],
     ["Roman Sanahuja", "Maria Teresa Casas", "Daniel Bascones", "Enrique Sanahuja", "Maria Teresa Sanahuja"],
     ["Leonard Mohr", "Flor Grimaldo"],
-    ["Rafa"]
+    ["Rafa"],
 ]
 
 
