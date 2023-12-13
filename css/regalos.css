@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 768px) {
-    .mobile-hide Ç {
+    .mobile-hide {
         display: none;
     }
 }

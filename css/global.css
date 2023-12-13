@@ -10,3 +10,13 @@
     font-weight: normal;
     font-family: alice;
 }
+
+/* Breakpoints */
+:root {
+    --small-max: 575.98px;
+    --medium-min: 576px;
+    --medium-max: 926.8px;
+    --large-min: 927px;
+}
+
+/*(min-width: 576px) and (max-width:926.8px)*/

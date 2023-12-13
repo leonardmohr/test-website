@@ -49,7 +49,7 @@
        text-align: justify;
    }
 
-   @media (max-width: 926.8px) {
+   @media (max-width: 926.98px) {
        .accommodation-container {
            display: flex;
            justify-content: space-between;
