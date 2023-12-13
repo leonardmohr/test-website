@@ -1,0 +1,12 @@
+/* Font Classes */
+.f-h1 {
+    font-family: 'Parisienne', cursive;
+    font-size: 80px;
+    font-weight: 900;
+}
+
+.f-h2 {
+    font-size: 35px !important;
+    font-weight: normal;
+    font-family: alice;
+}
