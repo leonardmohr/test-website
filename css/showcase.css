@@ -28,6 +28,12 @@
         padding-top: 125px;
         padding-bottom: 125px;
     }
+
+    .background-image {
+        background-image: linear-gradient(0deg, rgba(128, 128, 128, 0.59), rgba(128, 128, 128, 0.59)), url('../img/bea-ricardo-tall.jpeg');
+        background-size: cover;
+        position: relative;
+    }
 }
 
 #Title {

@@ -6,16 +6,32 @@
 }
 
 .background-image-tall {
-  background: url('../img/bea-ricardo-tall.jpeg');
   background-size: cover;
   min-width: 100%;
-  min-height: 500px;
   align-items: center;
   justify-items: center;
   display: grid;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1674px) {
+  .background-image-tall {
+    background: url('../img/background.jpg');
+    background-size: cover;
+    min-width: 100%;
+    min-height: 500px;
+  }
+}
+
+@media (min-width: 769px) and (max-width:1673.8px) {
+  .background-image-tall {
+    min-height: 500px;
+    background: url('../img/bea-ricardo-tall.jpeg');
+    background-size: cover;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 768.8px) {
   .rsvp-grid {
     grid-template-columns: 1fr;
     padding-bottom: 100px;
