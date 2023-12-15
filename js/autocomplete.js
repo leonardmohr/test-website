@@ -188,20 +188,34 @@ searchInput.onkeyup = function (e) {
                         displayGroupMembers(i);
                     });
                     foundName.addEventListener('mouseover', function (e) {
+                        if (highlighted) {
+                            highlighted.style.background = "#FFFFFF";
+                        }
+
                         foundName.style.background = "#e9f3ff";
                         highlighted = foundName;
                         console.log(foundName);
-                    })
+                    });
 
                     foundName.addEventListener('mouseleave', function (e) {
                         foundName.style.background = "#FFFFFF";
                         highlighted = null;
-                    })
+                    });
+
+                    foundName.addEventListener('focusout', function (e) {
+                        foundName.style.background = "#FFFFFF";
+                        highlighted = null;
+                    });
                     result.push(foundName);
                 }
             }
         }
         result = rankResults(input, result);
+        if (result.length > 0) {
+            highlighted = result[0];
+            highlighted.style.background = "#e9f3ff";
+        }
+
         display(result);
     } else {
         resultsBox.innerHTML = '';

@@ -6,8 +6,45 @@
     background-color: #f1f1f1;
     border-radius: 15px;
     padding: 40px;
+
 }
 
 .transportation {
     text-align: justify;
+}
+
+.transportation-container {
+    width: 50%;
+    border: none;
+}
+
+.transportation-box {
+    background-color: rgb(248, 248, 248);
+    border: none;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    height: 70%;
+}
+
+.transportation-section {
+    background-color: rgb(242, 235, 222);
+    text-align: juistify;
+    padding-top: 20px;
+}
+
+@media (max-width: 926.8px) {
+    .accommodation-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .transportation-container {
+        width: 100%;
+        /* Adjust the width as needed */
+        /*background-color: rgb(243, 235, 222);*/
+        box-sizing: border-box;
+    }
 }

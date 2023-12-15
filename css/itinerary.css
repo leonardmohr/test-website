@@ -19,12 +19,6 @@ figcaption {
     font-family: alice;
 }
 
-.flex-container-it>div>.heading {
-    font-size: 25px !important;
-    font-family: alice;
-    font-weight: bold;
-}
-
 .right-justified {
     text-align: right !important;
 }

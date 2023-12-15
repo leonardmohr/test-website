@@ -11,12 +11,19 @@
     font-family: alice;
 }
 
+.f-h3 {
+    font-size: 25px !important;
+    font-family: alice;
+    font-weight: bold;
+}
+
 /* Breakpoints */
 :root {
     --small-max: 575.98px;
     --medium-min: 576px;
     --medium-max: 926.8px;
     --large-min: 927px;
+    --margin-percent: 8%;
 }
 
 /*(min-width: 576px) and (max-width:926.8px)*/
