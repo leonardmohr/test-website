@@ -1,0 +1,10 @@
+footer {
+    text-align: center;
+    background-color: var(--color-header);
+    justify-content: center;
+}
+
+footer p {
+    padding: 25px;
+    color: rgb(160, 160, 160);
+}

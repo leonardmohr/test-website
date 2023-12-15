@@ -24,6 +24,7 @@
     --medium-max: 926.8px;
     --large-min: 927px;
     --margin-percent: 8%;
+    --color-header: #2e2d2d;
 }
 
 /*(min-width: 576px) and (max-width:926.8px)*/
