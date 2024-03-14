@@ -35,7 +35,14 @@ submitButton.addEventListener("click", function (event) {
     if (groupData.attending.length > 0) {
         isAttending = 1;
     }
-    submitToGoogleSheet(JSON.stringify(groupData), isAttending);
+    console.log("Attending: " + groupData.attending + "\nDays: " + groupData.days);
+    if (isAttending == 1 && groupData.days == 0) {
+        alertBox.innerHTML = "";
+        alertBox.appendChild(customAlert("danger", "Tienes que elegir los días que van a asistír."));
+    } else {
+        submitToGoogleSheet(JSON.stringify(groupData), isAttending);
+    }
+    
 });
 
 const previousButton = document.createElement("button");
@@ -140,6 +147,7 @@ function previousEvent() {
         slideOne();
         slideOneButton();
     } else {
+        alertBox.innerHTML = "";
         slideTwo();
         slideTwoButton();
     }
@@ -862,6 +870,7 @@ const url = "https://script.google.com/macros/s/AKfycbzODq_GlaklYlJzFQEWWbGctQA6
 
 function submitToGoogleSheet(data, isAttending) {
     console.log("submitting: " + data);
+    alertBox.innerHTML = "";
     alertBox.appendChild(customAlert("info", "Sending data to server."));
 
     $.post(url, data)
