@@ -27,7 +27,7 @@ figcaption {
     background-color: #f1f1f1;
     margin: 10px;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: var(--radius-large);
     text-align: center;
 }
 

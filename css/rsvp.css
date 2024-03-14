@@ -48,6 +48,7 @@
 #rsvp-form {
   height: auto;
   margin-top: 50px;
+  border-radius: var(--radius-large);
 }
 
 .form-control {
@@ -121,9 +122,14 @@
 .button {
   min-width: 80px;
   max-width: 145px;
-  display: inline;
+  /*display: inline;*/
   margin: 5px;
   border: none;
+}
+
+#action-button-container {
+  display: flex;
+  justify-content: center;
 }
 
 #form-slide-container {

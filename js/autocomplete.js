@@ -30,7 +30,11 @@ submitButton.addEventListener("click", function (event) {
     console.log("clicking");
     event.preventDefault(); // Prevent the default form submission behavior
     updateValue();
-    submitToGoogleSheet(JSON.stringify(groupData));
+    let isAttending = 0;
+    if (groupData.attending.length > 0) {
+        isAttending = 1;
+    }
+    submitToGoogleSheet(JSON.stringify(groupData), isAttending);
 });
 
 const previousButton = document.createElement("button");
@@ -76,7 +80,7 @@ groupBox.id = "group-box";
 groupBox.className = "mb-3";
 
 const actionButtonContainer = document.createElement("div");
-actionButtonContainer.className = "row justify-content-center";
+//actionButtonContainer.className = "row justify-content-center";
 actionButtonContainer.id = "action-button-container";
 
 /* Guest information for Group. This is what gets sent to google sheets. */
@@ -129,10 +133,13 @@ function slideOneButton() {
 
 
 function previousEvent() {
+    console.log(slideNumber);
     if (slideNumber == 1) {
         slideOne();
+        slideOneButton();
     } else {
         slideTwo();
+        slideTwoButton();
     }
     slideNumber--;
 }
@@ -144,6 +151,10 @@ window.onkeydown = function (e) {
     if (e.key === "Enter" || e.keyCode === 13) {
         e.preventDefault();
     }
+}
+
+function songRequests() {
+    
 }
 
 /* inputBox.onkeyup
@@ -402,6 +413,20 @@ function displayGroupMembers(index) {
     resetForm();
 }
 
+function slideTwoButton() {
+    actionButtonContainer.innerHTML = '';
+    actionButtonContainer.appendChild(previousButton);
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn btn-info button";
+    button.innerText = "Next";
+    button.addEventListener("click", nextButtonEvent);
+
+    actionButtonContainer.appendChild(button);
+
+}
+
 function removeName(name, array) {
     let i = array.indexOf(name);
     if (i !== -1) {
@@ -419,7 +444,10 @@ function resetForm() {
     specificDays.value = "";
 }
 
-
+window.onclick = e => {
+    console.log(e.target);  // to get the element
+    console.log(e.target.tagName);  // to get the element tag name alone
+} 
 /* newGroupMember()
  * ---------------
  * Stylizes the name of group member and 
@@ -429,8 +457,8 @@ function newGroupMember(name) {
     let inputGroup = document.createElement("div");
     inputGroup.className = "input-group mb-3";
 
-    let inputGroupText = document.createElement("div");
-    inputGroupText.className = "input-group-text";
+    let checkBoxContainer = document.createElement("div");
+    checkBoxContainer.className = "input-group-text";
 
     let textInput = document.createElement("input");
     textInput.type = "text";
@@ -439,7 +467,13 @@ function newGroupMember(name) {
     textInput.ariaLabel = name + " is in this group";
     textInput.setAttribute("readonly", "");
     textInput.setAttribute("disabled", "");
+    textInput.style.pointerEvents = "none";
 
+    inputGroup.style.position = "relative";
+    inputGroup.style.zIndex = "4";
+    textInput.style.zIndex = "0";
+    textInput.style.position="relative";
+    checkBoxContainer.style.zIndex = "3";
 
     let checkBox = document.createElement("input");
     checkBox.className = "form-check-input mt-0";
@@ -454,16 +488,20 @@ function newGroupMember(name) {
             removeName(name, groupData.attending);
             groupData.notAttending.push(name);
             slideOneButton();
+            console.log(inputGroup);
+            
         } else {
             checkBox.checked = true;
             textInput.removeAttribute("disabled");
             removeName(name, groupData.notAttending);
             groupData.attending.push(name);
             slideOneButton();
+            console.log(inputGroup);
         }
         console.log(groupData);
     });
 
+    
     checkBox.addEventListener("click", function () {
         if (checkBox.checked) {
             checkBox.checked = false;
@@ -471,14 +509,12 @@ function newGroupMember(name) {
             checkBox.checked = true;
         }
     });
+    
 
-
-
-
-    inputGroupText.appendChild(checkBox);
+    checkBoxContainer.appendChild(checkBox);
 
     inputGroup.appendChild(textInput);
-    inputGroup.appendChild(inputGroupText);
+    inputGroup.appendChild(checkBoxContainer);
     return inputGroup;
 
 };
@@ -605,10 +641,14 @@ function slideTwo() {
     specificDaysContainer.appendChild(specificDays);
 
     formSlideContainer.appendChild(specificDaysContainer);
-    formSlideContainer.appendChild(previousButton);
-    formSlideContainer.appendChild(slideTwoButton());
+    slideTwoButton();
+    formSlideContainer.appendChild(actionButtonContainer);
+    slideTwoButton();
+    //formSlideContainer.appendChild(previousButton);
+    //formSlideContainer.appendChild(slideTwoButton());
 
 }
+/*
 function slideTwoButton() {
     const button = document.createElement("button");
     button.type = "button";
@@ -617,8 +657,17 @@ function slideTwoButton() {
     button.addEventListener("click", nextButtonEvent);
     return button;
 }
+*/
 
 /* SLIDE THREE */
+
+function slideThreeButton() {
+    actionButtonContainer.innerHTML = '';
+    actionButtonContainer.appendChild(previousButton);
+    submitButton.value = "Submit";
+    submitButton.style.background = "#68cfee";
+    actionButtonContainer.appendChild(submitButton);
+}
 
 
 function slideThree() {
@@ -730,10 +779,12 @@ function slideThree() {
     // Append the outer div to the target container with ID "container"
     formSlideContainer.appendChild(outerDiv);
     formSlideContainer.appendChild(alertBox);
-    formSlideContainer.appendChild(previousButton);
-    submitButton.value = "Submit";
-    submitButton.style.background = "#68cfee";
-    formSlideContainer.appendChild(submitButton);
+    //formSlideContainer.appendChild(previousButton);
+   // submitButton.value = "Submit";
+   // submitButton.style.background = "#68cfee";
+    //formSlideContainer.appendChild(submitButton);
+    slideThreeButton();
+    formSlideContainer.appendChild(actionButtonContainer);
 };
 
 function updateValue() {
@@ -786,7 +837,7 @@ function nextButtonEvent() {
 
 const url = "https://script.google.com/macros/s/AKfycbzkasVlzzLOJtN1HA3mHt6Y-sqDLbWtRXxTQTtMVqvwUIjMa-YFJiBWv8s6ZURCkrd7/exec";
 
-function submitToGoogleSheet(data) {
+function submitToGoogleSheet(data, isAttending) {
     console.log("submitting: " + data);
     alertBox.appendChild(customAlert("info", "Sending data to server."));
 
@@ -801,9 +852,15 @@ function submitToGoogleSheet(data) {
                 searchInput.value = "";               // Clear input box
                 resultsBox.innerHTML = "";         // Don't show anymore suggestions
                 groupBox.innerHTML = "";
+                actionButtonContainer.innerHTML = "";
                 resetGroup();
                 slideOne();
-                alert("¡Gracias! Recibimos su confirmacion, nos vemos pronto :)")
+                if (isAttending) {
+                    alert("¡Gracias! Recibimos su confirmacion, nos vemos pronto :)");
+                } else {
+                    alert("Lamentamos que no podrán asistir.");
+                }
+                
             }
         })
         .fail(function (response) {
