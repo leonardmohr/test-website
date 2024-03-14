@@ -1,4 +1,17 @@
-var end = new Date('03/05/2025 10:1 AM');
+dateWithTimeZone = (timeZone, year, month, day, hour, minute, second) => {
+    let date = new Date(Date.UTC(year, month, day, hour, minute, second));
+  
+    let utcDate = new Date(date.toLocaleString('en-US', { timeZone: "UTC" }));
+    let tzDate = new Date(date.toLocaleString('en-US', { timeZone: timeZone }));
+    let offset = utcDate.getTime() - tzDate.getTime();
+  
+    date.setTime( date.getTime() + offset );
+  
+    return date;
+  };
+
+var end = dateWithTimeZone("America/Dominica",2025,2,8,17,30,0);
+console.log(end);
 
 var _second = 1000;
 var _minute = _second * 60;
@@ -26,5 +39,7 @@ function showRemaining() {
     document.getElementById('minutes').innerHTML = minutes;
     document.getElementById('seconds').innerHTML = seconds;
 }
+
+
 
 timer = setInterval(showRemaining, 1000);
