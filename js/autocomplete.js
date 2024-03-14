@@ -9,6 +9,7 @@ const input3 = document.createElement("input");
 const specificDays = document.createElement("textarea");
 const alertBox = document.createElement("div");
 const integerInput = document.createElement('input');
+const songRequests = document.createElement("textarea");
 
 const form = document.getElementById("rsvp-form");
 
@@ -99,6 +100,7 @@ function resetGroup() {
     groupData.seats = 0;
     groupData.note = "";
     groupData.groupNumber = 0;
+    groupData.song = "";
 }
 
 var slideNumber = 0;   /* Keep track of what slide is being shown */
@@ -153,7 +155,20 @@ window.onkeydown = function (e) {
     }
 }
 
-function songRequests() {
+function songRequestBuilder() {
+    let songRequestContainer = document.createElement("div");
+    songRequestContainer.className = "input-group mb-3";
+    songRequests.className = "form-control";
+    songRequests.placeholder = "Escribe tu cancion deseada aqui";
+
+    songRequests.addEventListener("keyup", songAction);
+
+    function songAction() {
+        groupData.song = songRequests.value;
+    }
+
+    songRequestContainer.appendChild(songRequests);
+    return songRequestContainer;
     
 }
 
@@ -442,6 +457,7 @@ function resetForm() {
 
     // remove text
     specificDays.value = "";
+    songRequests.value = "";
 }
 
 window.onclick = e => {
@@ -778,13 +794,20 @@ function slideThree() {
 
     // Append the outer div to the target container with ID "container"
     formSlideContainer.appendChild(outerDiv);
-    formSlideContainer.appendChild(alertBox);
+    
     //formSlideContainer.appendChild(previousButton);
    // submitButton.value = "Submit";
    // submitButton.style.background = "#68cfee";
     //formSlideContainer.appendChild(submitButton);
+    let songRequestText = document.createElement("p");
+    songRequestText.textContent = "Cual canción deseas escuchar en la boda?";
+    songRequestText.className = "mb-3";
+    formSlideContainer.appendChild(songRequestText);
+    formSlideContainer.appendChild(songRequestBuilder());
+    formSlideContainer.appendChild(alertBox);
     slideThreeButton();
     formSlideContainer.appendChild(actionButtonContainer);
+
 };
 
 function updateValue() {
@@ -835,7 +858,7 @@ function nextButtonEvent() {
 
 }
 
-const url = "https://script.google.com/macros/s/AKfycbzkasVlzzLOJtN1HA3mHt6Y-sqDLbWtRXxTQTtMVqvwUIjMa-YFJiBWv8s6ZURCkrd7/exec";
+const url = "https://script.google.com/macros/s/AKfycbzODq_GlaklYlJzFQEWWbGctQA6wLkQ6zrbQtL1y8L5z3tCEDC5hn07i2Rv-_2yPBU5/exec";
 
 function submitToGoogleSheet(data, isAttending) {
     console.log("submitting: " + data);
