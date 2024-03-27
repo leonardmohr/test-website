@@ -25,7 +25,7 @@
 @media (min-width: 769px) and (max-width:1673.8px) {
   .background-image-tall {
     min-height: 500px;
-    background: url('../img/bea-ricardo-tall.jpeg');
+    background: url('../img/bea-ricardo-tall-centered.jpeg');
     background-size: cover;
     min-width: 100%;
   }
