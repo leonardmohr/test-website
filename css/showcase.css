@@ -21,6 +21,7 @@
         padding-top: 25px;
         padding-bottom: 25px;
     }
+    
 }
 
 @media (max-width: 575.98px) {
@@ -34,11 +35,20 @@
         background-size: cover;
         position: relative;
     }
+    #Title {
+        display: block;
+        padding: 25px;
+        text-align: center;
+        color: rgb(132, 100, 68);
+    }
 }
 
-#Title {
-    display: block;
-    padding: 50px;
-    text-align: center;
-    color: rgb(132, 100, 68);
+@media (min-width:576px) {
+    #Title {
+        display: block;
+        padding: 50px;
+        text-align: center;
+        color: rgb(132, 100, 68);
+    }
 }
+
