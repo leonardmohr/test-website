@@ -1,3 +1,10 @@
+@media (min-width: 769px) {
+  #rsvp-title {
+    margin-top:70px;
+  }
+}
+
+
 .rsvp-grid {
   display: grid;
   grid-template-columns: 1.5fr 2fr;
@@ -19,6 +26,7 @@
     background-size: cover;
     min-width: 100%;
     min-height: 500px;
+    align-items:center
   }
 }
 
@@ -28,6 +36,7 @@
     background: url('../img/bea-ricardo-tall-centered.jpeg');
     background-size: cover;
     min-width: 100%;
+    align-items: normal;
   }
 }
 
@@ -42,6 +51,23 @@
     background-size: cover;
     min-height: 200px;
     max-height: 200px;
+    align-items: center;
+  }
+}
+
+@media (min-width: 420px) {
+  .search-box {
+    background: #fff;
+    width: 350px;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 419.8px) {
+  .search-box {
+    background: #fff;
+    width: 250px;
+    border-radius: 5px;
   }
 }
 
@@ -138,11 +164,7 @@
   align-items: center;
 }
 
-.search-box {
-  background: #fff;
-  width: 350px;
-  border-radius: 5px;
-}
+
 
 .search-row {
   display: flex;
