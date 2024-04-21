@@ -868,7 +868,7 @@ function nextButtonEvent() {
 
 
 
-const url = "https://script.google.com/macros/s/AKfycbyraR-vFE-mrYkTJml6v5vdHgxD4Lj_GVxcGdvF6Q01bYgQTMXJCjfjdp6R0kdRlcME/exec";
+const url = "https://script.google.com/macros/s/AKfycbxAvlkTdYpVy6lO9ZWx66srdrvmvi39IA-2EeSIEucWfrSxugenKcnkwDLO1q5pRxHh/exec";
 
 function getNamesFromGoogleSheets() {
     $.get(url, function(data) {
