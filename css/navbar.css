@@ -2,7 +2,11 @@
     background-color: var(--color-header);
 }
 
-
+@media (max-width: 378px) {
+    .navbar {
+        font-size: 12px;
+    }
+}
 
 @media (min-width: 576px) {
     .navbar-nav > li {
