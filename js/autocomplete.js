@@ -883,7 +883,7 @@ function getNamesFromGoogleSheets() {
 function submitToGoogleSheet(data, isAttending) {
     console.log("submitting: " + data);
     alertBox.innerHTML = "";
-    alertBox.appendChild(customAlert("info", "Sending data to server."));
+    alertBox.appendChild(customAlert("info", "Enviando Respuestas"));
 
     $.post(url, data)
         .done(function (response) {
@@ -910,7 +910,7 @@ function submitToGoogleSheet(data, isAttending) {
         .fail(function (response) {
             console.log(response);
             alertBox.innerHTML = "";
-            alertBox.appendChild(customAlert("danger", "Sorry! There was an issue with the server ("));
+            alertBox.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
         });
 }
 
