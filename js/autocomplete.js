@@ -631,7 +631,7 @@ function slideTwo() {
     let label3 = document.createElement("label");
     label3.className = "form-check-label";
     label3.for = "check3";
-    label3.textContent = "Sábado";
+    label3.textContent = "Sabado";
     formCheck3.appendChild(input3);
     formCheck3.appendChild(label3);
     col3.appendChild(formCheck3);
@@ -866,7 +866,19 @@ function nextButtonEvent() {
 
 }
 
-const url = "https://script.google.com/macros/s/AKfycbzODq_GlaklYlJzFQEWWbGctQA6wLkQ6zrbQtL1y8L5z3tCEDC5hn07i2Rv-_2yPBU5/exec";
+
+
+const url = "https://script.google.com/macros/s/AKfycbyraR-vFE-mrYkTJml6v5vdHgxD4Lj_GVxcGdvF6Q01bYgQTMXJCjfjdp6R0kdRlcME/exec";
+
+function getNamesFromGoogleSheets() {
+    $.get(url, function(data) {
+    // This function executes when the request is successful
+    groups = JSON.parse(data);
+}).fail(function(xhr, status, error) {
+    // This function executes if the request fails
+    console.error("Error:", error);
+});
+}
 
 function submitToGoogleSheet(data, isAttending) {
     console.log("submitting: " + data);
@@ -913,35 +925,5 @@ function customAlert(type, message) {
 
 /* Guest List */
 
-const groups = [
-    ["Beatriz Gil", "Ricardo Lebron"],
-    ["Marivi Gonzalez", "Carlos Gil"],
-    ["Clara Gil", "Plus One"],
-    ["Silvia Gonzalez", "Mauro Gandini"],
-    ["Guillermo Gonzalez"],
-    ["Fefe Gil", "Maricar Rodrigalvarez"],
-    ["Jorge Gil", "Beatriz"],
-    ["Jose Antonio Gil", "Patricia Fernandez"],
-    ["Tía Tere"],
-    ["Clara"],
-    ["Beatriz", "Pepo"],
-    ["Eunisis Vasquez"],
-    ["Eduardo Vasquez", "Esposa"],
-    ["Jose Maria Echevarria", "Teresa Echevarria"],
-    ["Andreu Sacasas", "Isabel Garriga"],
-    ["Jose Luis Vandres", "Begoña Bernues", "Nacho Vandres"],
-    ["Gonzalo", "Marisa", "Patricia"],
-    ["Monica Triana", "Jordi"],
-    ["Carlos Segarra", "Eli Gonzalez", "Carlitos"],
-    ["Belen Rubinat", "Chema", "David"],
-    ["Maria Masaneda", "Pocho"],
-    ["Ignacio Tejero", "Rosa"],
-    ["Roman Sanahuja", "Maria Teresa Casas", "Daniel Bascones", "Enrique Sanahuja", "Maria Teresa Sanahuja"],
-    ["Leonard Mohr", "Flor Grimaldo"],
-    ["Rafa"],
-]
-
-
-/*
- <button type="button" class="row btn btn-info button" >Siguente</button>
-*/ 
+var groups;
+getNamesFromGoogleSheets();
