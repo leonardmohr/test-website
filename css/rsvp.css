@@ -4,7 +4,6 @@
   }
 }
 
-
 .rsvp-grid {
   display: grid;
   grid-template-columns: 1.5fr 2fr;
@@ -66,7 +65,7 @@
 @media (max-width: 419.8px) {
   .search-box {
     background: #fff;
-    width: 250px;
+    width: 100%;
     border-radius: 5px;
   }
 }
