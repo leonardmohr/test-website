@@ -21,7 +21,7 @@ const form = document.getElementById("rsvp-form");
 const nextButton = document.createElement("button");
 nextButton.type = "button";
 nextButton.className = "btn btn-info button";
-nextButton.innerText = "Next";
+nextButton.innerText = "Siguiente";
 nextButton.addEventListener("click", nextButtonEvent);
 
 const submitButton = document.createElement("input");
@@ -688,7 +688,7 @@ function slideTwoButton() {
 function slideThreeButton() {
     actionButtonContainer.innerHTML = '';
     actionButtonContainer.appendChild(previousButton);
-    submitButton.value = "Submit";
+    submitButton.value = "Enviar";
     submitButton.style.background = "#68cfee";
     actionButtonContainer.appendChild(submitButton);
 }
