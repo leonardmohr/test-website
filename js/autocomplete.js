@@ -631,7 +631,7 @@ function slideTwo() {
     let label3 = document.createElement("label");
     label3.className = "form-check-label";
     label3.for = "check3";
-    label3.textContent = "Sabado";
+    label3.textContent = "Sábado";
     formCheck3.appendChild(input3);
     formCheck3.appendChild(label3);
     col3.appendChild(formCheck3);
@@ -653,8 +653,8 @@ function slideTwo() {
     specificDaysContainer.className = "input-group mb-3";
     //let specificDays = document.createElement("textarea");
     specificDays.className = "form-control";
-    specificDays.placeholder = "Escribe aquí si alguien en tu grupo va a asistir días differentes.";
-    specificDays.ariaLabel = "Escribe aquí si alguien en tu grupo va a asistir días differentes.";
+    specificDays.placeholder = "Escribe aquí si alguien en tu grupo va a asistir días diferentes.";
+    specificDays.ariaLabel = "Escribe aquí si alguien en tu grupo va a asistir días diferentes.";
     specificDays.addEventListener("keyup", modifiedDays);
 
     function modifiedDays() {
@@ -900,7 +900,7 @@ function submitToGoogleSheet(data, isAttending) {
                 resetGroup();
                 slideOne();
                 if (isAttending) {
-                    alert("¡Gracias! Recibimos su confirmacion, nos vemos pronto :)");
+                    alert("¡Gracias! Recibimos su confirmación, nos vemos pronto :)");
                 } else {
                     alert("Lamentamos que no podrán asistir.");
                 }
