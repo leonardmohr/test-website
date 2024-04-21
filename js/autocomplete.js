@@ -48,7 +48,7 @@ submitButton.addEventListener("click", function (event) {
 const previousButton = document.createElement("button");
 previousButton.type = "button";
 previousButton.className = "btn btn-info button"
-previousButton.innerText = "Previous";
+previousButton.innerText = "Anterior";
 previousButton.addEventListener("click", previousEvent);
 
 /* Elements related to first slide */
@@ -167,7 +167,7 @@ function songRequestBuilder() {
     let songRequestContainer = document.createElement("div");
     songRequestContainer.className = "input-group mb-3";
     songRequests.className = "form-control";
-    songRequests.placeholder = "Escribe tu cancion deseada aqui";
+    songRequests.placeholder = "Escribe tu canción deseada aquí";
 
     songRequests.addEventListener("keyup", songAction);
 
@@ -443,7 +443,7 @@ function slideTwoButton() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "btn btn-info button";
-    button.innerText = "Next";
+    button.innerText = "Siguiente";
     button.addEventListener("click", nextButtonEvent);
 
     actionButtonContainer.appendChild(button);
@@ -697,7 +697,7 @@ function slideThreeButton() {
 function slideThree() {
     formSlideContainer.innerHTML = "";
     let slide3Instructions = document.createElement("p");
-    slide3Instructions.textContent = "Elije cuantos van a usar camion."
+    slide3Instructions.textContent = "Elije cuántos van a usar camión."
     formSlideContainer.appendChild(slide3Instructions);
     // Create the outer div with classes "mb-3 row"
     const outerDiv = document.createElement('div');
@@ -808,7 +808,7 @@ function slideThree() {
    // submitButton.style.background = "#68cfee";
     //formSlideContainer.appendChild(submitButton);
     let songRequestText = document.createElement("p");
-    songRequestText.textContent = "Cual canción deseas escuchar en la boda?";
+    songRequestText.textContent = "¿Cuál canción deseas escuchar en la boda?";
     songRequestText.className = "mb-3";
     formSlideContainer.appendChild(songRequestText);
     formSlideContainer.appendChild(songRequestBuilder());
