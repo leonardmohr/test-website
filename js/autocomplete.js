@@ -167,7 +167,7 @@ function songRequestBuilder() {
     let songRequestContainer = document.createElement("div");
     songRequestContainer.className = "input-group mb-3";
     songRequests.className = "form-control";
-    songRequests.placeholder = "Escribe tu canción deseada aquí";
+    songRequests.placeholder = "Escribe tus canciones favoritas aquí";
 
     songRequests.addEventListener("keyup", songAction);
 
@@ -697,7 +697,7 @@ function slideThreeButton() {
 function slideThree() {
     formSlideContainer.innerHTML = "";
     let slide3Instructions = document.createElement("p");
-    slide3Instructions.textContent = "Elije cuántos van a usar camión."
+    slide3Instructions.textContent = "¿Cuántas personas necesitan autobús?"
     formSlideContainer.appendChild(slide3Instructions);
     // Create the outer div with classes "mb-3 row"
     const outerDiv = document.createElement('div');
@@ -808,7 +808,7 @@ function slideThree() {
    // submitButton.style.background = "#68cfee";
     //formSlideContainer.appendChild(submitButton);
     let songRequestText = document.createElement("p");
-    songRequestText.textContent = "¿Cuál canción deseas escuchar en la boda?";
+    songRequestText.textContent = "¿Qué canciones te gustaría escuchar en la boda?";
     songRequestText.className = "mb-3";
     formSlideContainer.appendChild(songRequestText);
     formSlideContainer.appendChild(songRequestBuilder());
