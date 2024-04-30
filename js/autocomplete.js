@@ -10,6 +10,7 @@ const specificDays = document.createElement("textarea");
 const alertBox = document.createElement("div");
 const integerInput = document.createElement('input');
 const songRequests = document.createElement("textarea");
+const alertBoxSlideOne = document.createElement("div");
 
 const form = document.getElementById("rsvp-form");
 
@@ -121,6 +122,7 @@ function slideOne() {
     formSlideContainer.innerHTML = "";
     formSlideContainer.appendChild(searchBox);
     formSlideContainer.appendChild(groupBox);
+    formSlideContainer.appendChild(alertBoxSlideOne);
     formSlideContainer.appendChild(actionButtonContainer);
 
 }
@@ -148,6 +150,7 @@ function previousEvent() {
         slideOneButton();
     } else {
         alertBox.innerHTML = "";
+        alertBoxSlideOne.innerHTML = "";
         slideTwo();
         slideTwoButton();
     }
@@ -410,7 +413,7 @@ function display(result) {
  *         an integer for how many additional guests group can bring.
  */
 function displayGroupMembers(index) {
-
+    alertBoxSlideOne.innerHTML = "";
     resetGroup();
     groupData.groupNumber = index;
     slideOneButton();
@@ -870,13 +873,6 @@ function nextButtonEvent() {
 
 const url = "https://script.google.com/macros/s/AKfycbxMg1q0zmF62DjGnoyyiTxmI35CsD7r7ZGIW0NO_-fQLsrNC_uFYJAMXe7VTvapRt8cAA/exec";
 
-function hasAlreadySubmitted(groupNumber) {
-    $.get(url, groupNumber, function(data) {
-
-    }).fail(function(xhr, status, error) {
-
-    });
-}
 
 function getNamesFromGoogleSheets() {
     $.get(url, "names", function(data) {
@@ -889,24 +885,40 @@ function getNamesFromGoogleSheets() {
 }
 
 function submitWrapper(dataInput, isAttending, groupNumber) {
-    alertBox.innerHTML = "";
-    alertBox.appendChild(customAlert("info", "Enviando Respuestas"));
+    if (isAttending == 0) {
+        alertBoxSlideOne.innerHTML = "";
+        alertBoxSlideOne.appendChild(customAlert("info", "Enviando Respuestas"));
+    } else {
+        alertBox.innerHTML = "";
+        alertBox.appendChild(customAlert("info", "Enviando Respuestas"));
+    }
+    
     
     $.get(url, "" + groupNumber, function(data) {
         if (data === "false") {
             submitToGoogleSheet(dataInput, isAttending);
         }
         else {
-            console.log("Your group has already submitted" + JSON.stringify(data));
-            alertBox.innerHTML = "";
-            alertBox.appendChild(customAlert("danger", "Your group has already submitted."));
+            if (isAttending == 0) {
+                alertBoxSlideOne.innerHTML = "";
+                alertBoxSlideOne.appendChild(customAlert("danger", "Your group has already submitted"));
+            } else {
+                alertBox.innerHTML = "";
+                alertBox.appendChild(customAlert("danger", "Your group has already submitted."));
+            }
+            
         }
 
         
     }).fail(function(xhr, status, error) {
-        console.log("SubmitWrapper failed");
-        alertBox.innerHTML = "";
-        alertBox.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
+        if (isAttending == 0) {
+            alertBoxSlideOne.innerHTML = "";
+            alertBoxSlideOne.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
+        } else {
+            alertBox.innerHTML = "";
+            alertBox.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
+        }
+      
         
     });
 }
