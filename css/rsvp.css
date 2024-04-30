@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 1.5fr 2fr;
   justify-items: center;
-  /*align-items: center;*/
+  align-items: center;
 }
 
 .background-image-tall {
@@ -42,7 +42,11 @@
 @media (max-width: 768.8px) {
   .rsvp-grid {
     grid-template-columns: 1fr;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
+  }
+
+  #rsvp-form {
+    margin-top: 50px;
   }
 
   .background-image-tall {
@@ -72,7 +76,6 @@
 
 #rsvp-form {
   height: auto;
-  margin-top: 50px;
   border-radius: var(--radius-large);
 }
 

@@ -25,6 +25,7 @@
     box-sizing: border-box;
     border-radius: var(--radius-large);
     height: 70%;
+    text-align: justify;
 }
 
 .transportation-section {

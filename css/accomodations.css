@@ -31,13 +31,25 @@
 
    .hotel-information {
        text-align: justify;
-       width: 80%;
+       width: 95%;
        margin: 10px;
    }
 
 
    .accommodation-box>p {
        text-align: justify;
+   }
+
+   #bullet-list {
+    
+  display: block;
+  list-style-type: disc;
+  margin-bottom: 1 em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 30px;
+  text-align: left;
+
    }
 
    @media (max-width: 926.8px) {
