@@ -40,7 +40,7 @@ submitButton.addEventListener("click", function (event) {
         alertBox.innerHTML = "";
         alertBox.appendChild(customAlert("danger", "Tienes que elegir los días que van a asistír."));
     } else {
-        submitToGoogleSheet(JSON.stringify(groupData), isAttending);
+        submitWrapper(JSON.stringify(groupData), isAttending, groupData.groupNumber);
     }
     
 });
@@ -868,10 +868,18 @@ function nextButtonEvent() {
 
 
 
-const url = "https://script.google.com/macros/s/AKfycbxAvlkTdYpVy6lO9ZWx66srdrvmvi39IA-2EeSIEucWfrSxugenKcnkwDLO1q5pRxHh/exec";
+const url = "https://script.google.com/macros/s/AKfycbxMg1q0zmF62DjGnoyyiTxmI35CsD7r7ZGIW0NO_-fQLsrNC_uFYJAMXe7VTvapRt8cAA/exec";
+
+function hasAlreadySubmitted(groupNumber) {
+    $.get(url, groupNumber, function(data) {
+
+    }).fail(function(xhr, status, error) {
+
+    });
+}
 
 function getNamesFromGoogleSheets() {
-    $.get(url, function(data) {
+    $.get(url, "names", function(data) {
     // This function executes when the request is successful
     groups = JSON.parse(data);
 }).fail(function(xhr, status, error) {
@@ -880,10 +888,30 @@ function getNamesFromGoogleSheets() {
 });
 }
 
-function submitToGoogleSheet(data, isAttending) {
-    console.log("submitting: " + data);
+function submitWrapper(dataInput, isAttending, groupNumber) {
     alertBox.innerHTML = "";
     alertBox.appendChild(customAlert("info", "Enviando Respuestas"));
+    
+    $.get(url, "" + groupNumber, function(data) {
+        if (data === "false") {
+            submitToGoogleSheet(dataInput, isAttending);
+        }
+        else {
+            console.log("Your group has already submitted" + JSON.stringify(data));
+            alertBox.innerHTML = "";
+            alertBox.appendChild(customAlert("danger", "Your group has already submitted."));
+        }
+
+        
+    }).fail(function(xhr, status, error) {
+        console.log("SubmitWrapper failed");
+        alertBox.innerHTML = "";
+        alertBox.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
+        
+    });
+}
+
+function submitToGoogleSheet(data, isAttending) {
 
     $.post(url, data)
         .done(function (response) {
