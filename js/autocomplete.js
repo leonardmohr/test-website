@@ -41,7 +41,7 @@ submitButton.addEventListener("click", function (event) {
         alertBox.innerHTML = "";
         alertBox.appendChild(customAlert("danger", "Tienes que elegir los días que van a asistír."));
     } else {
-        submitWrapper(JSON.stringify(groupData), isAttending, groupData.groupNumber);
+        submitToGoogleSheet(JSON.stringify(groupData), isAttending);
     }
     
 });
@@ -871,11 +871,11 @@ function nextButtonEvent() {
 
 
 
-const url = "https://script.google.com/macros/s/AKfycbwfEvxW4vsQMgGhYbuFSHDkRJEIZIkF_arpBcxtGaGZyafkPmImTV_IlmLzbq4sOARe2A/exec";
+const url = "https://script.google.com/macros/s/AKfycbzAGVVIuGts5iiICOjMSSmw7yi3yGuktq9Uw6EikHUJKwxhtXGHUmLW5IMaUDecif7kbg/exec";
 
 
 function getNamesFromGoogleSheets() {
-    $.get(url, "names", function(data) {
+    $.get(url, function(data) {
     // This function executes when the request is successful
     groups = JSON.parse(data);
 }).fail(function(xhr, status, error) {
@@ -884,7 +884,8 @@ function getNamesFromGoogleSheets() {
 });
 }
 
-function submitWrapper(dataInput, isAttending, groupNumber) {
+
+function submitToGoogleSheet(data, isAttending) {
     if (isAttending == 0) {
         alertBoxSlideOne.innerHTML = "";
         alertBoxSlideOne.appendChild(customAlert("info", "Enviando Respuestas"));
@@ -892,46 +893,10 @@ function submitWrapper(dataInput, isAttending, groupNumber) {
         alertBox.innerHTML = "";
         alertBox.appendChild(customAlert("info", "Enviando Respuestas"));
     }
-    
-    
-    $.get(url, "" + groupNumber, function(data) {
-        if (data === "false") {
-            submitToGoogleSheet(dataInput, isAttending);
-        }
-        else {
-            if (isAttending == 0) {
-                alertBoxSlideOne.innerHTML = "";
-                alertBoxSlideOne.appendChild(customAlert("danger", "Your group has already submitted"));
-            } else {
-                alertBox.innerHTML = "";
-                alertBox.appendChild(customAlert("danger", "Your group has already submitted."));
-            }
-            
-        }
-
-        
-    }).fail(function(xhr, status, error) {
-        if (isAttending == 0) {
-            alertBoxSlideOne.innerHTML = "";
-            alertBoxSlideOne.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
-        } else {
-            alertBox.innerHTML = "";
-            alertBox.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
-        }
-      
-        
-    });
-}
-
-function submitToGoogleSheet(data, isAttending) {
-
     $.post(url, data)
         .done(function (response) {
             console.log(response);
-            if (response.result === "error") {
-                alertBox.innerHTML = "";
-                alertBox.appendChild(customAlert("danger", response.message));
-            } else {
+            if (response === "Successfully Submitted") {
                 alertBox.innerHTML = "";
                 searchInput.value = "";               // Clear input box
                 resultsBox.innerHTML = "";         // Don't show anymore suggestions
@@ -943,14 +908,30 @@ function submitToGoogleSheet(data, isAttending) {
                     alert("¡Gracias! Recibimos su confirmación, nos vemos pronto :)");
                 } else {
                     alert("Lamentamos que no podrán asistir.");
+                } 
+            } else if (response === "Already Submitted") {
+                if (isAttending == 0) {
+                    alertBoxSlideOne.innerHTML = "";
+                    alertBoxSlideOne.appendChild(customAlert("danger", "Your group has already submitted"));
+                } else {
+                    alertBox.innerHTML = "";
+                    alertBox.appendChild(customAlert("danger", "Your group has already submitted."));
                 }
-                
-            }
+            } if (response.result === "error") {
+                alertBox.innerHTML = "";
+                alertBox.appendChild(customAlert("danger", response.message));
+            } 
         })
         .fail(function (response) {
             console.log(response);
-            alertBox.innerHTML = "";
-            alertBox.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
+            if (isAttending == 0) {
+                alertBoxSlideOne.innerHTML = "";
+                alertBoxSlideOne.appendChild(customAlert("danger", "Lo siento, problems con el servidor :("));
+            } else {
+                alertBox.innerHTML = "";
+                alertBox.appendChild(customAlert("danger", "Lo siento, problemas con el servidor :("));
+            }
+            
         });
 }
 
