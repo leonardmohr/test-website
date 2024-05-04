@@ -29,14 +29,14 @@ const submitButton = document.createElement("input");
 submitButton.type = "button";
 submitButton.className = "btn button"
 submitButton.addEventListener("click", function (event) {
-    console.log("clicking");
+    
     event.preventDefault(); // Prevent the default form submission behavior
     updateValue();
     let isAttending = 0;
     if (groupData.attending.length > 0) {
         isAttending = 1;
     }
-    console.log("Attending: " + groupData.attending + "\nDays: " + groupData.days);
+   
     if (isAttending == 1 && groupData.days == 0) {
         alertBox.innerHTML = "";
         alertBox.appendChild(customAlert("danger", "Tienes que elegir los días que van a asistír."));
@@ -144,7 +144,7 @@ function slideOneButton() {
 
 
 function previousEvent() {
-    console.log(slideNumber);
+    
     if (slideNumber == 1) {
         slideOne();
         slideOneButton();
@@ -231,7 +231,7 @@ searchInput.onkeyup = function (e) {
 
                         foundName.style.background = "#e9f3ff";
                         highlighted = foundName;
-                        console.log(foundName);
+                   
                     });
 
                     foundName.addEventListener('mouseleave', function (e) {
@@ -291,17 +291,12 @@ function msdSort(array) {
 
 }
 
-function printArray(array) {
-    for (var i = 0; i < array.length; i++) {
-        console.log(i + ": " + array[i].textContent + "\n");
-    }
-}
 
 function msdSortHelper(array, index, maxLength) {
     let result = [];
     if ((array.length <= 1) || (index >= maxLength))
         return array;
-    //printArray(array);
+    
     array.sort((a, b) => {
         if (a.textContent.charAt(index) === b.textContent.charAt(index))
             return 0;
@@ -309,7 +304,7 @@ function msdSortHelper(array, index, maxLength) {
             return 1;
         return -1;
     });
-    //printArray(array);
+   
     var start = 0;
 
     let l = array.length;
@@ -350,13 +345,13 @@ function enterKey(e) {
     }
 
 
-    console.log("Enter Pressed and groupNumber = " + groupNumber);
+
 
 }
 
 function upKey(e) {
     e.preventDefault();
-    console.log("up");
+
     let selected;
     if (highlighted && (selected = highlighted.previousElementSibling)) {
         highlighted.style.background = "#FFFFFF";
@@ -368,7 +363,7 @@ function upKey(e) {
 
 function downKey(e) {
     e.preventDefault();
-    console.log("down");
+  
     let selected;
 
     if (!highlighted) {
@@ -471,10 +466,6 @@ function resetForm() {
     songRequests.value = "";
 }
 
-window.onclick = e => {
-    console.log(e.target);  // to get the element
-    console.log(e.target.tagName);  // to get the element tag name alone
-} 
 /* newGroupMember()
  * ---------------
  * Stylizes the name of group member and 
@@ -515,7 +506,7 @@ function newGroupMember(name) {
             removeName(name, groupData.attending);
             groupData.notAttending.push(name);
             slideOneButton();
-            console.log(inputGroup);
+            
             
         } else {
             checkBox.checked = true;
@@ -523,9 +514,9 @@ function newGroupMember(name) {
             removeName(name, groupData.notAttending);
             groupData.attending.push(name);
             slideOneButton();
-            console.log(inputGroup);
+            
         }
-        console.log(groupData);
+       
     });
 
     
@@ -589,7 +580,7 @@ function slideTwo() {
         } else {
             groupData.days = groupData.days & 0b011;
         }
-        console.log(groupData);
+        
     }
 
     // Second Check Box
@@ -617,7 +608,7 @@ function slideTwo() {
         } else {
             groupData.days = groupData.days & 0b101;
         }
-        console.log(groupData);
+        
     }
 
     // Third Check Box
@@ -646,7 +637,7 @@ function slideTwo() {
         } else {
             groupData.days = groupData.days & 0b110;
         }
-        console.log(groupData);
+       
     }
 
     formSlideContainer.appendChild(checkContainer);
@@ -662,7 +653,7 @@ function slideTwo() {
 
     function modifiedDays() {
         groupData.note = specificDays.value;
-        console.log(groupData);
+   
     }
 
     specificDaysContainer.appendChild(specificDays);
@@ -748,7 +739,7 @@ function slideThree() {
     integerInput.addEventListener('keydown', e => {
         const pressed = e.key;
         const isNumber = (isFinite(pressed) && pressed != " ");
-        console.log(pressed);
+        
         const acceptableCodes = [
             "Backspace",
             "ArrowLeft",
@@ -823,7 +814,7 @@ function slideThree() {
 
 function updateValue() {
     groupData.seats = integerInput.valueAsNumber;
-    console.log(groupData);
+   
 }
 
 
@@ -895,7 +886,6 @@ function submitToGoogleSheet(data, isAttending) {
     }
     $.post(url, data)
         .done(function (response) {
-            console.log(response);
             if (response === "Successfully Submitted") {
                 alertBox.innerHTML = "";
                 searchInput.value = "";               // Clear input box
@@ -912,10 +902,10 @@ function submitToGoogleSheet(data, isAttending) {
             } else if (response === "Already Submitted") {
                 if (isAttending == 0) {
                     alertBoxSlideOne.innerHTML = "";
-                    alertBoxSlideOne.appendChild(customAlert("danger", "Your group has already submitted"));
+                    alertBoxSlideOne.appendChild(customAlert("danger", "Su grupo ya ha confirmado su asistencia."));
                 } else {
                     alertBox.innerHTML = "";
-                    alertBox.appendChild(customAlert("danger", "Your group has already submitted."));
+                    alertBox.appendChild(customAlert("danger", "Su grupo ya ha confirmado su asistencia."));
                 }
             } if (response.result === "error") {
                 alertBox.innerHTML = "";
