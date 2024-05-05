@@ -888,6 +888,7 @@ function submitToGoogleSheet(data, isAttending) {
         .done(function (response) {
             if (response === "Successfully Submitted") {
                 alertBox.innerHTML = "";
+                alertBoxSlideOne.innerHTML = "";
                 searchInput.value = "";               // Clear input box
                 resultsBox.innerHTML = "";         // Don't show anymore suggestions
                 groupBox.innerHTML = "";

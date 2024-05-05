@@ -2,6 +2,10 @@
     background-color: rgb(243, 235, 222);
 }
 
+.dresscode {
+    margin-top: auto;
+}
+
 .flex-container-it {
     display: flex;
     flex-wrap: wrap;
@@ -26,7 +30,14 @@ figcaption {
 .flex-container-it>div {
     background-color: #f1f1f1;
     margin: 10px;
-    padding: 20px;
+    
+    padding-top: 20px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     border-radius: var(--radius-large);
     text-align: center;
 }
@@ -57,7 +68,7 @@ figcaption {
 
     .flex-container-it>div {
         min-width: 400px;
-        height: 400px;
+        height: 410px;
         max-width: 400px;
     }
 
