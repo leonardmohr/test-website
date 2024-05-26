@@ -7,18 +7,47 @@
     <title>Beatriz y Ricardo</title>
     <meta name="robots" content="noindex">
     <script>
-        const language = Navigator.language;
-        console.log(language);
-        if (language !== 'es') {
-            window.location.href = "./en";
-        } else {
-            window.location.href = "./es"
-        }
+        var getFirstBrowserLanguage = function () {
+            console.log("getFirstBrowserLanguage: Start");
+            var nav = window.navigator,
+                browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
+                i,
+                language;
+            console.log("getFirstBrowserLanguage: Second");
+            // support for HTML 5.1 "navigator.languages"
+            if (Array.isArray(nav.languages)) {
+                for (i = 0; i < nav.languages.length; i++) {
+                    language = nav.languages[i];
+                    if (language && language.length) {
+                        return language;
+                    }
+                }
+            }
+            console.log("getFirstBrowserLanguage: Third");
+            // support for other well known properties in browsers
+            for (i = 0; i < browserLanguagePropertyKeys.length; i++) {
+                language = nav[browserLanguagePropertyKeys[i]];
+                if (language && language.length) {
+                    return language;
+                }
+            }
+            console.log("getFirstBrowserLanguage: Fourth");
+            return null;
+        };
+        function run() {
+            const language = navigator.language || navigator.userLanguage;
+            if (language != null && language.includes("es")) {
+                window.location.href = "./es";
+            } else {
+                window.location.href = "./en"
+            }
+        };
+        run();
     </script>
 </head>
 
 <body>
-    
+
 </body>
 
 </html>

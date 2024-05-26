@@ -46,10 +46,6 @@
     grid-template-columns: 1fr;
   }
 
-  #rsvp-form {
-    margin-top: 50px;
-  }
-
   .background-image-tall {
     background: url('../img/background.jpg');
     background-size: cover;
@@ -59,7 +55,10 @@
   }
 }
 
-@media (min-width: 420px) {
+@media (min-width: 460px) {
+  #rsvp-form {
+    padding: 40px;
+  }
   .search-box {
     background: #fff;
     width: 350px;
@@ -67,7 +66,10 @@
   }
 }
 
-@media (max-width: 419.8px) {
+@media (max-width: 459.8px) {
+  #rsvp-form {
+    padding: 25px;
+  }
   .search-box {
     background: #fff;
     width: 100%;
@@ -76,7 +78,7 @@
 }
 
 #rsvp-form {
-  margin: 50px;
+  margin: 50px 0px;
   height: auto;
   border-radius: var(--radius-large);
 }
@@ -215,4 +217,8 @@
   border-radius: 3px;
   padding: 10px 5px;
   cursor: pointer;
+}
+
+.days-attending-checkbox {
+  pointer-events: none;
 }

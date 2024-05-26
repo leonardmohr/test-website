@@ -553,10 +553,11 @@ function slideTwo() {
     // First Check Box
     let col1 = document.createElement("div");
     col1.className = "col";
+    col1.addEventListener("click", thursdayAction);
     let formCheck1 = document.createElement("div");
     formCheck1.className = "form-check";
     //let input1 = document.createElement("input");
-    input1.className = "form-check-input";
+    input1.className = "form-check-input days-attending-checkbox";
     input1.type = "checkbox";
     input1.id = "check1";
     let label1 = document.createElement("label");
@@ -567,7 +568,7 @@ function slideTwo() {
     formCheck1.appendChild(label1);
     col1.appendChild(formCheck1);
     checkContainer.appendChild(col1);
-    input1.addEventListener("change", thursdayAction);
+    //input1.addEventListener("change", thursdayAction);
 
     /* thursdayAction()
      * ----------------
@@ -576,9 +577,11 @@ function slideTwo() {
      */
     function thursdayAction() {
         if (input1.checked) {
-            groupData.days = groupData.days | 0b100;
-        } else {
+            input1.checked = false;
             groupData.days = groupData.days & 0b011;
+        } else {
+            input1.checked = true;
+            groupData.days = groupData.days | 0b100;
         }
         
     }
@@ -586,14 +589,15 @@ function slideTwo() {
     // Second Check Box
     let col2 = document.createElement("div");
     col2.className = "col";
+    col2.addEventListener("click", fridayAction);
     let formCheck2 = document.createElement("div");
     formCheck2.className = "form-check";
     //let input2 = document.createElement("input");
-    input2.className = "form-check-input";
+    input2.className = "form-check-input days-attending-checkbox";
     input2.type = "checkbox";
     input2.value = "";
     input2.id = "check2";
-    input2.addEventListener("change", fridayAction);
+    //input2.addEventListener("change", fridayAction);
     let label2 = document.createElement("label");
     label2.className = "form-check-label";
     label2.for = "check2";
@@ -604,9 +608,11 @@ function slideTwo() {
     checkContainer.appendChild(col2);
     function fridayAction() {
         if (input2.checked) {
-            groupData.days = groupData.days | 0b010;
-        } else {
+            input2.checked = false;
             groupData.days = groupData.days & 0b101;
+        } else {
+            input2.checked = true;
+            groupData.days = groupData.days | 0b010;
         }
         
     }
@@ -614,14 +620,16 @@ function slideTwo() {
     // Third Check Box
     let col3 = document.createElement("div");
     col3.className = "col";
+    col3.addEventListener("click", saturdayAction);
     let formCheck3 = document.createElement("div");
     formCheck3.className = "form-check";
+
     //let input3 = document.createElement("input");
-    input3.className = "form-check-input";
+    input3.className = "form-check-input days-attending-checkbox";
     input3.type = "checkbox";
     input3.value = "";
     input3.id = "check3";
-    input3.addEventListener("change", saturdayAction);
+    //input3.addEventListener("change", saturdayAction);
     let label3 = document.createElement("label");
     label3.className = "form-check-label";
     label3.for = "check3";
@@ -633,9 +641,11 @@ function slideTwo() {
 
     function saturdayAction() {
         if (input3.checked) {
-            groupData.days = groupData.days | 0b001;
-        } else {
+            input3.checked = false;
             groupData.days = groupData.days & 0b110;
+        } else {
+            input3.checked = true;
+            groupData.days = groupData.days | 0b001; 
         }
        
     }

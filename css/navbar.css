@@ -2,9 +2,15 @@
     background-color: var(--color-header);
 }
 
-@media (max-width: 378px) {
+@media (min-width: 333px) and (max-width: 402px) {
     .navbar {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 332.8px) {
+    .navbar {
+        font-size: 10px;
     }
 }
 
